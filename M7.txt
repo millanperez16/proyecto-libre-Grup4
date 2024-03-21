@@ -1,0 +1,5 @@
+La práctica está terminada y hace todo lo que debe hacer.
+Hay algunos cambios en el planteamiento, por ejemplo hay variables globales nuevas, y por supuesto métodos nuevos.
+
+IMPORTANTÍSIMO mirar vista1.fxml, algunas etiquetas <ImageView> dentro de <children> tienen cambios.
+Estos cambios NO se pueden hacer con el SceneBuilder, hay que abrir el fichero a mano y hacerlos a mano.
