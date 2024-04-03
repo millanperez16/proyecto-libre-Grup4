@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Frontend</string>
+    <string name="title">Euroconstrucciones</string>
+    <string name="options">Opcions</string>
+    <string name="about_us">Sobre nosaltres</string>
+    <string name="new_budget">Nou pressupost</string>
+    <string name="my_budgets">Els meus pressupostos</string>
+    <string name="gallery">Galería</string>
+    <string name="language">Idioma</string>
+    <string name="english">Anglès</string>
+    <string name="spanish">Espanyol</string>
+    <string name="catalan">Català</string>
+</resources>

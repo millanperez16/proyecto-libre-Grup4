@@ -3,12 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_language"
-        app:showAsAction="always"
         android:icon="@drawable/language_icon"
-        android:title="@string/language" />
+        android:title="@string/language"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/action_spanish"
+                android:title="@string/spanish"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_english"
+                android:title="@string/english"
+                app:showAsAction="never" />
+        </menu>
+
+    </item>
+
     <item
         android:id="@+id/action_menu"
-        app:showAsAction="always"
         android:icon="@drawable/menu_icon"
-        android:title="@string/options" />
+        android:title="@string/options"
+        app:showAsAction="always" >
+
+        <menu>
+            <item
+                android:id="@+id/action_aboutus"
+                android:title="@string/about_us"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_newbudget"
+                android:title="@string/new_budget"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_mybudgets"
+                android:title="@string/my_budgets"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_gallery"
+                android:title="@string/gallery"
+                app:showAsAction="never" />
+        </menu>
+    </item>
 </menu>
