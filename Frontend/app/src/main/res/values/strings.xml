@@ -2,12 +2,17 @@
     <string name="app_name">Frontend</string>
     <string name="title">Euroconstrucciones</string>
     <string name="options">Options</string>
-    <string name="about_us">About Us</string>
-    <string name="new_budget">New Budget</string>
-    <string name="my_budgets">My Budgets</string>
-    <string name="gallery">Gallery</string>
-    <string name="language">Language</string>
-    <string name="english">English</string>
-    <string name="spanish">Spanish</string>
-    <string name="catalan">Catalan</string>
+    <string name="toolbar_about_us">About Us</string>
+    <string name="toolbar_new_budget">New Budget</string>
+    <string name="toolbar_my_budgets">My Budgets</string>
+    <string name="toolbar_gallery">Gallery</string>
+    <string name="toolbar_language">Language</string>
+    <string name="toolbar_english">English</string>
+    <string name="toolbar_spanish">Spanish</string>
+    <string name="toolbar_catalan">Catalan</string>
+    <string name="login_name">E-Mail:</string>
+    <string name="login_pwd">Password:</string>
+    <string name="login_login">Login</string>
+    <string name="login_register">You don\'t have an account? &lt;a href="#"&gt;Register&lt;/a&gt;</string>
+    <string name="login_forgot_pwd">&lt;a href="#"&gt;Forgot your password?&lt;/a&gt;</string>
 </resources>
