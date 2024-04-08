@@ -4,18 +4,23 @@
     <item
         android:id="@+id/action_language"
         android:icon="@drawable/language_icon"
-        android:title="@string/language"
+        android:title="@string/toolbar_language"
         app:showAsAction="ifRoom">
 
         <menu>
             <item
                 android:id="@+id/action_spanish"
-                android:title="@string/spanish"
+                android:title="@string/toolbar_spanish"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/action_english"
-                android:title="@string/english"
+                android:title="@string/toolbar_english"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_catalan"
+                android:title="@string/toolbar_catalan"
                 app:showAsAction="never" />
         </menu>
 
@@ -30,22 +35,22 @@
         <menu>
             <item
                 android:id="@+id/action_aboutus"
-                android:title="@string/about_us"
+                android:title="@string/toolbar_about_us"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/action_newbudget"
-                android:title="@string/new_budget"
+                android:title="@string/toolbar_new_budget"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/action_mybudgets"
-                android:title="@string/my_budgets"
+                android:title="@string/toolbar_my_budgets"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/action_gallery"
-                android:title="@string/gallery"
+                android:title="@string/toolbar_gallery"
                 app:showAsAction="never" />
         </menu>
     </item>

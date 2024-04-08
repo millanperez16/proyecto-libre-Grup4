@@ -16,14 +16,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#E7E7E7"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:title="@string/title" />
+            <include layout="@layout/toolbar_layout"/>
 
             <TextView
                 android:id="@+id/tvLoginName"
