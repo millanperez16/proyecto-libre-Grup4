@@ -13,6 +13,13 @@
     <string name="login_name">E-Mail:</string>
     <string name="login_pwd">Password:</string>
     <string name="login_login">Login</string>
-    <string name="login_register">You don\'t have an account? &lt;a href="#"&gt;Register&lt;/a&gt;</string>
-    <string name="login_forgot_pwd">&lt;a href="#"&gt;Forgot your password?&lt;/a&gt;</string>
+    <string name="login_no_account">You don\'t have an account?</string>
+    <string name="login_register">Register</string>
+    <string name="login_forgot_pwd">Forgot your password?</string>
+    <string name="register_name">Name and surnames:</string>
+    <string name="register_email">E-Mail:</string>
+    <string name="register_phone">Phone Number:</string>
+    <string name="register_pwd">Password:</string>
+    <string name="register_pwd_confirm">Confirm Password:</string>
+    <string name="register_register">Register</string>
 </resources>

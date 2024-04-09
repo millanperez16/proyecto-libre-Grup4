@@ -5,7 +5,7 @@
     <string name="toolbar_about_us">Sobre nosaltres</string>
     <string name="toolbar_new_budget">Nou pressupost</string>
     <string name="toolbar_my_budgets">Els meus pressupostos</string>
-    <string name="toolbar_gallery">Galería</string>
+    <string name="toolbar_gallery">Galeria</string>
     <string name="toolbar_language">Idioma</string>
     <string name="toolbar_english">Anglès</string>
     <string name="toolbar_spanish">Espanyol</string>
@@ -13,6 +13,13 @@
     <string name="login_name">E-Mail:</string>
     <string name="login_pwd">Contrasenya:</string>
     <string name="login_login">Iniciar sessió</string>
-    <string name="login_register">No tens compte d\'usuari? &lt;a href="#"&gt;Registra\'t&lt;/a&gt;</string>
-    <string name="login_forgot_pwd">&lt;a href="#"&gt;Has oblidat la contrasenya?&lt;/a&gt;</string>
+    <string name="login_no_account">No tens compte d\'usuari?</string>
+    <string name="login_register">Registra\'t</string>
+    <string name="login_forgot_pwd">Has oblidat la contrasenya?</string>
+    <string name="register_name">Nom i cognoms:</string>
+    <string name="register_email">E-Mail:</string>
+    <string name="register_phone">Telèfon:</string>
+    <string name="register_pwd">Contrasenya:</string>
+    <string name="register_pwd_confirm">Confirmar contrasenya:</string>
+    <string name="register_register">Registrar-me</string>
 </resources>

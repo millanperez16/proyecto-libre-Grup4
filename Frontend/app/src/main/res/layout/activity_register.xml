@@ -13,9 +13,87 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <include layout="@layout/toolbar_layout"/>
+            <include layout="@layout/toolbar_layout" />
+
+            <TextView
+                android:id="@+id/tvRegisterName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_name" />
+
+            <EditText
+                android:id="@+id/etRegisterName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="@string/register_name"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tvRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_email" />
+
+            <EditText
+                android:id="@+id/etRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="@string/register_email"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/tvRegisterPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_phone" />
+
+            <EditText
+                android:id="@+id/etRegisterPhone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="@string/register_phone"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/tvRegisterPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_pwd" />
+
+            <EditText
+                android:id="@+id/etRegisterPwd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="@string/register_pwd"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/tvRegisterPwdConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_pwd_confirm" />
+
+            <EditText
+                android:id="@+id/etRegisterPwdConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="@string/register_pwd_confirm"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_register" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
