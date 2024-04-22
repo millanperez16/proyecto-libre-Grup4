@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
             //Handle execution failures//
             public void onFailure(Call<List<RetroUsers>> call, Throwable throwable) {
             //If the request fails, then display the following toast//
-            Toast.makeText(MainActivity.this, "Unable to load users", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Unable to load users", Toast.LENGTH_SHORT).show();
             }
         });
     }
