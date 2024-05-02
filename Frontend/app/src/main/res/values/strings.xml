@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Frontend</string>
-    <string name="title">Euroconstrucciones</string>
-    <string name="options">Options</string>
+    <string name="app_title">Euroconstrucciones</string>
+    <string name="app_options">Options</string>
     <string name="toolbar_about_us">About Us</string>
     <string name="toolbar_new_budget">New Budget</string>
     <string name="toolbar_my_budgets">My Budgets</string>
@@ -22,4 +22,11 @@
     <string name="register_pwd">Password:</string>
     <string name="register_pwd_confirm">Confirm Password:</string>
     <string name="register_register">Register</string>
+    <string name="generic_title"><u>Client Data</u></string>
+    <string name="generic_full_name">Name and Surnames:</string>
+    <string name="generic_street">Street:</string>
+    <string name="generic_postal_code">Postal Code:</string>
+    <string name="generic_municipality">Municipality:</string>
+    <string name="generic_province">Province:</string>
+    <string name="generic_community">Autonomous Community:</string>
 </resources>
