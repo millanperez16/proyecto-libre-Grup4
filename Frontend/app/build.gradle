@@ -6,6 +6,12 @@ android {
     namespace 'com.example.frontend'
     compileSdk 33
 
+    bundle{
+        language{
+            enableSplit false
+        }
+    }
+
     defaultConfig {
         applicationId "com.example.frontend"
         minSdk 29
@@ -38,4 +44,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.11.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.9'
+    implementation "androidx.preference:preference:1.2.1"
 }

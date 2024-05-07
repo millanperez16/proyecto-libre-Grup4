@@ -20,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     ListView list;
     ArrayList<String> titles=new ArrayList<>();
@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Toolbar toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         TextView tvLoginRegister=findViewById(R.id.tvLoginRegister);
         tvLoginRegister.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_main;
     }
 
     @Override
