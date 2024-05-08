@@ -30,85 +30,71 @@
                 android:id="@+id/tvNameSurname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/generic_full_name" />
 
             <EditText
                 android:id="@+id/etNameSurname"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="@string/generic_full_name"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/tvStreet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/generic_street" />
 
             <EditText
                 android:id="@+id/etStreet"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="@string/generic_street"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/tvPostalCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/generic_postal_code" />
 
             <EditText
                 android:id="@+id/etPostalCode"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="@string/generic_postal_code"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/tvMunicipality"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/generic_municipality" />
 
             <EditText
                 android:id="@+id/etMunicipality"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="@string/generic_municipality"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/tvProvince"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/generic_province" />
 
             <EditText
                 android:id="@+id/etProvince"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/tvAutonomousCommunity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <EditText
-                android:id="@+id/etAutonomousCommunity"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="@string/generic_province"
+                android:inputType="text" />
 
         </LinearLayout>
 
