@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GenericBudgetActivity extends AppCompatActivity {
+public class GenericBudgetActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,11 @@ public class GenericBudgetActivity extends AppCompatActivity {
                 Toast.makeText(GenericBudgetActivity.this, "Unable to load elements", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_generic_budget;
     }
 
     private void loadDataList(Municipi municipi) {
