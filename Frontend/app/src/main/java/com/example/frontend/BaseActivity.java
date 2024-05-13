@@ -1,5 +1,6 @@
 package com.example.frontend;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -49,6 +50,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.action_catalan) {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("ca"));
+            return true;
+        }else if (item.getItemId() == R.id.action_new_budget){
+            startActivity(new Intent(this, GenericBudgetActivity.class));
             return true;
         } else {
             return super.onOptionsItemSelected(item);

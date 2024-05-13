@@ -25,7 +25,7 @@
     <string name="generic_title"><u>Dades del client</u></string>
     <string name="generic_full_name">Nom i cognoms:</string>
     <string name="generic_street">Carrer:</string>
-    <string name="generic_postal_code">Postal Code:</string>
-    <string name="generic_municipality">Municipality:</string>
-    <string name="generic_province">Province:</string>
+    <string name="generic_postal_code">Codi postal:</string>
+    <string name="generic_municipality">Municipi:</string>
+    <string name="generic_province">Província:</string>
 </resources>

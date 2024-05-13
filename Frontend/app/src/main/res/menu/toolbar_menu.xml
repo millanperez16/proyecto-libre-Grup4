@@ -34,17 +34,17 @@
 
         <menu>
             <item
-                android:id="@+id/action_aboutus"
+                android:id="@+id/action_about_us"
                 android:title="@string/toolbar_about_us"
                 app:showAsAction="never" />
 
             <item
-                android:id="@+id/action_newbudget"
+                android:id="@+id/action_new_budget"
                 android:title="@string/toolbar_new_budget"
                 app:showAsAction="never" />
 
             <item
-                android:id="@+id/action_mybudgets"
+                android:id="@+id/action_my_budgets"
                 android:title="@string/toolbar_my_budgets"
                 app:showAsAction="never" />
 
