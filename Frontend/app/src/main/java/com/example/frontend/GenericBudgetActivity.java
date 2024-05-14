@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.frontend.impl.ApiServiceImpl;
@@ -14,6 +15,8 @@ import com.example.frontend.models.Element;
 import com.example.frontend.models.Municipi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,6 +32,12 @@ public class GenericBudgetActivity extends BaseActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ArrayList<String> provinces = new ArrayList<>(Arrays.asList("Barcelona","Tarragona","Lleida","Girona","Villanueva del Trabuco"));
+        Spinner spProvince=findViewById(R.id.spProvince);
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spProvince.setAdapter(adapter);
 
         AutoCompleteTextView actv = findViewById(R.id.actvMunicipality);
         String like = actv.getText().toString();
