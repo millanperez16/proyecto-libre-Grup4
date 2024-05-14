@@ -22,10 +22,10 @@
     <string name="register_pwd">Contraseña:</string>
     <string name="register_pwd_confirm">Confirmar contraseña:</string>
     <string name="register_register">Registrarme</string>
-    <string name="generic_title"><u>Client Data</u></string>
-    <string name="generic_full_name">Name and Surnames:</string>
-    <string name="generic_street">Street:</string>
-    <string name="generic_postal_code">Postal Code:</string>
-    <string name="generic_municipality">Municipality:</string>
-    <string name="generic_province">Province:</string>
+    <string name="generic_title"><u>Datos del cliente</u></string>
+    <string name="generic_full_name">Nombre y apellidos:</string>
+    <string name="generic_street">Calle:</string>
+    <string name="generic_postal_code">Código postal:</string>
+    <string name="generic_municipality">Municipio:</string>
+    <string name="generic_province">Provincia:</string>
 </resources>

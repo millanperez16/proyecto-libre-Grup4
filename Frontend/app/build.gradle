@@ -6,12 +6,6 @@ android {
     namespace 'com.example.frontend'
     compileSdk 33
 
-    bundle{
-        language{
-            enableSplit false
-        }
-    }
-
     defaultConfig {
         applicationId "com.example.frontend"
         minSdk 29

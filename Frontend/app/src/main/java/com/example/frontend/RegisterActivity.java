@@ -22,7 +22,6 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -30,6 +29,10 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_register;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

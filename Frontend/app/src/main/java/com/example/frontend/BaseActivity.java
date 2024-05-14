@@ -1,13 +1,14 @@
 package com.example.frontend;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.os.LocaleListCompat;
 import androidx.fragment.app.FragmentManager;
-
-import com.example.frontend.models.LocaleHelper;
 
 public abstract class BaseActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -25,7 +26,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            if (getLayoutResource() != R.layout.activity_main) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
         }
     }
 
@@ -40,13 +43,16 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
             return true;
         } else if (item.getItemId() == R.id.action_english) {
-            LocaleHelper.setLocale(getApplicationContext(), "en");
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"));
             return true;
         } else if (item.getItemId() == R.id.action_spanish) {
-            LocaleHelper.setLocale(getApplicationContext(), "es");
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es"));
             return true;
         } else if (item.getItemId() == R.id.action_catalan) {
-            LocaleHelper.setLocale(getApplicationContext(), "ca");
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("ca"));
+            return true;
+        }else if (item.getItemId() == R.id.action_new_budget){
+            startActivity(new Intent(this, GenericBudgetActivity.class));
             return true;
         } else {
             return super.onOptionsItemSelected(item);
