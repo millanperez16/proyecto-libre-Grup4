@@ -28,12 +28,8 @@ public class GenericBudgetActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generic_budget);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        ArrayList<String> provinces = new ArrayList<>(Arrays.asList("Barcelona","Tarragona","Lleida","Girona","Villanueva del Trabuco"));
+        ArrayList<String> provinces = new ArrayList<>(Arrays.asList("Barcelona"));
         Spinner spProvince=findViewById(R.id.spProvince);
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
