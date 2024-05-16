@@ -1,7 +1,5 @@
 package com.example.frontend;
 
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
@@ -16,7 +14,6 @@ import com.example.frontend.models.Municipi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,7 +34,7 @@ public class GenericBudgetActivity extends BaseActivity {
 
         AutoCompleteTextView actv = findViewById(R.id.actvMunicipality);
         String like = actv.getText().toString();
-        ApiService service = ApiServiceImpl.getApiServiceInstance(like);
+        ApiService service = ApiServiceImpl.getApiServiceMunicipi(like);
         Call<Municipi> call = service.getMunicipi();
         call.enqueue(new Callback<Municipi>() {
             @Override
