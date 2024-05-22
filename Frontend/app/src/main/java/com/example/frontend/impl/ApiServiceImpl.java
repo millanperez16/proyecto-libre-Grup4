@@ -1,13 +1,18 @@
 package com.example.frontend.impl;
 
+
 import com.example.frontend.interfaces.ApiService;
-import com.example.frontend.models.User;
+import java.io.InputStream;
+import java.security.KeyStore;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
 
 public class ApiServiceImpl {
     private static ApiService apiService;
@@ -35,7 +40,7 @@ public class ApiServiceImpl {
         return apiService;
     }
 
-    public static ApiService getApiServiceNewUser(User user) {
+    public static ApiService getApiServiceNewUser() {
         // Creamos un interceptor y le indicamos el log level a usar
         final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -53,5 +58,23 @@ public class ApiServiceImpl {
             apiService = retrofitSingleton.create(ApiService.class);
         }
         return apiService;
+    }
+
+    public ApiService getClient(){
+        try{
+            InputStream inputStream =this.getClass().getResourceAsStream("res/raw/euroconstrucciones");
+            KeyStore keyStore = KeyStore.getInstance("JKS");
+            keyStore.load(inputStream,"euroconstrucciones".toCharArray());
+
+            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            trustManagerFactory.init(keyStore);
+            X509TrustManager trustManager = (X509TrustManager) trustManagerFactory.getTrustManagers()[0];
+
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        }catch(Exception e){
+
+        }
+        return null;
     }
 }
