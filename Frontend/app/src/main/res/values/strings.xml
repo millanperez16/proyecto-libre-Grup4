@@ -22,10 +22,15 @@
     <string name="register_pwd">Password:</string>
     <string name="register_pwd_confirm">Confirm Password:</string>
     <string name="register_register">Register</string>
+    <string name="register_submit_success" translatable="false">Register successful</string>
+    <string name="register_submit_fail" translatable="false">Something went wrong</string>
     <string name="generic_title"><u>Client Data</u></string>
     <string name="generic_full_name">Name and Surnames:</string>
     <string name="generic_street">Street:</string>
     <string name="generic_postal_code">Postal Code:</string>
     <string name="generic_municipality">Municipality:</string>
     <string name="generic_province">Province:</string>
+    <string name="alert_message_empty" translatable="false">All fields need to be filled.</string>
+    <string name="alert_message_pwd" translatable="false">Password and confirmation do not match.</string>
+    <string name="alert_button_ok" translatable="false">OK</string>
 </resources>

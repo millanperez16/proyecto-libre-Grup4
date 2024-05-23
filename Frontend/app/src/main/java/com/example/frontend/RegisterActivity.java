@@ -1,17 +1,16 @@
 package com.example.frontend;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AlertDialog;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
-import com.example.frontend.models.Municipi;
-
-import java.util.List;
+import com.example.frontend.models.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,13 +18,24 @@ import retrofit2.Response;
 
 public class RegisterActivity extends BaseActivity {
 
+    EditText etName;
+    EditText etMail;
+    EditText etPhone;
+    EditText etPasswd;
+    EditText etConfirmPwd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        etName = findViewById(R.id.etRegisterName);
+        etMail = findViewById(R.id.etRegisterEmail);
+        etPhone = findViewById(R.id.etRegisterPhone);
+        etPasswd = findViewById(R.id.etRegisterPwd);
+        etConfirmPwd = findViewById(R.id.etRegisterPwdConfirm);
 
+        Button btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(v -> createUser());
 
     }
 
@@ -43,5 +53,46 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    public void createUser() {
+        if (validateUser()) {
+            User user = new User(etName.getText().toString(), etMail.getText().toString(), etPhone.getText().toString(), etPasswd.getText().toString());
+            ApiService service = ApiServiceImpl.getApiServiceNewUser();
+            Call<User> call = service.registerNewUser(user);
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.register_submit_success), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable throwable) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage(throwable.getMessage());
+                    builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
+                    builder.show();
+                    //Toast.makeText(getApplicationContext(), getString(R.string.register_submit_fail), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    public boolean validateUser() {
+        if (etName.getText().toString().isEmpty() || etMail.getText().toString().isEmpty() || etPhone.getText().toString().isEmpty() || etPasswd.getText().toString().isEmpty() || etConfirmPwd.getText().toString().isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(getString(R.string.alert_message_empty));
+            builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
+            builder.show();
+            return false;
+        }
+        if (!etPasswd.getText().toString().equals(etConfirmPwd.getText().toString())) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(getString(R.string.alert_message_pwd));
+            builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
+            builder.show();
+            return false;
+        }
+        return true;
     }
 }

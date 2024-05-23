@@ -88,13 +88,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/generic_province" />
 
-            <EditText
-                android:id="@+id/etProvince"
+            <Spinner
+                android:id="@+id/spProvince"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:hint="@string/generic_province"
-                android:inputType="text" />
+                android:layout_height="50dp" />
 
         </LinearLayout>
 
