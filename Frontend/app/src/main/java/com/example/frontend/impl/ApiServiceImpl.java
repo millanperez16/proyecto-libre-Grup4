@@ -68,12 +68,11 @@ public class ApiServiceImpl {
 
             TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
+            SSLContext sslContext = SSLContext.getInstance("TLS");
             X509TrustManager trustManager = (X509TrustManager) trustManagerFactory.getTrustManagers()[0];
-
+            sslContext.init(null, trustManagerFactory.getTrustManagers(), null);
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
         }catch(Exception e){
-
         }
         return null;
     }
