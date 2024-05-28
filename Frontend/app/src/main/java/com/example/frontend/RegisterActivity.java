@@ -58,7 +58,7 @@ public class RegisterActivity extends BaseActivity {
     public void createUser() {
         if (validateUser()) {
             User user = new User(etName.getText().toString(), etMail.getText().toString(), etPhone.getText().toString(), etPasswd.getText().toString());
-            ApiService service = ApiServiceImpl.getApiServiceNewUser();
+            ApiService service = ApiServiceImpl.getApiServiceNewUser(this);
             Call<User> call = service.registerNewUser(user);
             call.enqueue(new Callback<User>() {
                 @Override

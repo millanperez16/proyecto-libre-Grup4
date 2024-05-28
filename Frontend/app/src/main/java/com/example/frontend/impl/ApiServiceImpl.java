@@ -1,7 +1,15 @@
 package com.example.frontend.impl;
 
 
+import android.content.Context;
+import android.content.res.Resources;
+
+import com.example.frontend.BaseActivity;
+import com.example.frontend.R;
 import com.example.frontend.interfaces.ApiService;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.SecureRandom;
@@ -10,7 +18,6 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
@@ -24,6 +31,7 @@ public class ApiServiceImpl {
     private static final String BASE_URL = "https://do.diba.cat/api/dataset/municipis/";
     private static final String BASE_URL2 = "https://gestorapi.gencat.cat/dadesobertes/consulta/consultadades";
     private static final String BASE_URL_REGISTER = "https://192.168.9.163:8442/clientes/";
+    private static Context contextApp;
 
     public static ApiService getApiServiceMunicipi(String like) {
         // Creamos un interceptor y le indicamos el log level a usar
@@ -45,14 +53,20 @@ public class ApiServiceImpl {
         return apiService;
     }
 
-    public static ApiService getApiServiceNewUser() {
+    public static ApiService getApiServiceNewUser(Context context) {
         // Creamos un interceptor y le indicamos el log level a usar
         final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+        contextApp = context;
+
         // Asociamos el interceptor a las peticiones
-        final OkHttpClient.Builder httpClient = getClient().newBuilder();
-        httpClient.addInterceptor(logging);
+        final OkHttpClient cli = getClient();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if (cli != null){
+            httpClient = cli.newBuilder();
+            httpClient.addInterceptor(logging);
+        }
 
         if (apiService == null) {
             Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
@@ -67,8 +81,9 @@ public class ApiServiceImpl {
 
     public static OkHttpClient getClient(){
         try{
-            InputStream inputStream = ApiServiceImpl.class.getClassLoader().getResourceAsStream("res/raw/euroconstrucciones");
-            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+            InputStream inputStream = contextApp.getResources().openRawResource(R.raw.euroconstrucciones);
+
+            KeyStore keyStore = KeyStore.getInstance("JKS");
             keyStore.load(inputStream,"euroconstrucciones".toCharArray());
 
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("X509");
