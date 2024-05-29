@@ -2,14 +2,10 @@ package com.example.frontend.impl;
 
 
 import android.content.Context;
-import android.content.res.Resources;
 
-import com.example.frontend.BaseActivity;
 import com.example.frontend.R;
 import com.example.frontend.interfaces.ApiService;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.SecureRandom;
@@ -18,6 +14,7 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
@@ -30,7 +27,7 @@ public class ApiServiceImpl {
     private static ApiService apiService;
     private static final String BASE_URL = "https://do.diba.cat/api/dataset/municipis/";
     private static final String BASE_URL2 = "https://gestorapi.gencat.cat/dadesobertes/consulta/consultadades";
-    private static final String BASE_URL_REGISTER = "https://192.168.9.163:8442/clientes/";
+    private static final String BASE_URL_REGISTER = "https://192.168.1.133:8442/clientes/";
     private static Context contextApp;
 
     public static ApiService getApiServiceMunicipi(String like) {
@@ -83,7 +80,7 @@ public class ApiServiceImpl {
         try{
             InputStream inputStream = contextApp.getResources().openRawResource(R.raw.euroconstrucciones);
 
-            KeyStore keyStore = KeyStore.getInstance("JKS");
+            KeyStore keyStore = KeyStore.getInstance("pkcs12");
             keyStore.load(inputStream,"euroconstrucciones".toCharArray());
 
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("X509");
@@ -92,13 +89,24 @@ public class ApiServiceImpl {
 
             TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
+            TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
+
+            // Obtener el X509TrustManager del TrustManagerFactory
+            X509TrustManager x509TrustManager = null;
+            for (TrustManager trustManager : trustManagers) {
+                if (trustManager instanceof X509TrustManager) {
+                    x509TrustManager = (X509TrustManager) trustManager;
+                    break;
+                }
+            }
 
             SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(keyManagers, trustManagerFactory.getTrustManagers(), new SecureRandom());
 
             SSLSocketFactory socketFactory = sslContext.getSocketFactory();
-            OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder().
-                    sslSocketFactory(socketFactory, (X509TrustManager) trustManagerFactory);
+            OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
+                    .sslSocketFactory(socketFactory, x509TrustManager)
+                    .hostnameVerifier((hostname, session) -> true);
 
             return clientBuilder.build();
 
