@@ -2,14 +2,10 @@ package com.example.frontend.impl;
 
 
 import android.content.Context;
-import android.content.res.Resources;
 
-import com.example.frontend.BaseActivity;
 import com.example.frontend.R;
 import com.example.frontend.interfaces.ApiService;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.SecureRandom;
@@ -83,7 +79,7 @@ public class ApiServiceImpl {
         try{
             InputStream inputStream = contextApp.getResources().openRawResource(R.raw.euroconstrucciones);
 
-            KeyStore keyStore = KeyStore.getInstance("JKS");
+            KeyStore keyStore = KeyStore.getInstance("pkcs12");
             keyStore.load(inputStream,"euroconstrucciones".toCharArray());
 
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("X509");
