@@ -52,7 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("ca"));
             return true;
         }else if (item.getItemId() == R.id.action_new_budget){
-            startActivity(new Intent(this, GenericBudgetActivity.class));
+            startActivity(new Intent(this, BudgetClientDataActivity.class));
             return true;
         } else {
             return super.onOptionsItemSelected(item);

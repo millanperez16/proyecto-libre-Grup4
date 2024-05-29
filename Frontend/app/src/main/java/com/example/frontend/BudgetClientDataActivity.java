@@ -1,11 +1,13 @@
 package com.example.frontend;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
@@ -20,15 +22,35 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GenericBudgetActivity extends BaseActivity {
+public class BudgetClientDataActivity extends BaseActivity {
+
+    EditText etNameSurnames;
+    EditText etStreet;
+    EditText etPostalCode;
+    AutoCompleteTextView actvMunicipality;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        etNameSurnames=findViewById(R.id.etNameSurnames);
+        etStreet=findViewById(R.id.etStreet);
+        etPostalCode=findViewById(R.id.etPostalCode);
+        actvMunicipality=findViewById(R.id.actvMunicipality);
+
+        Button btnBuild = findViewById(R.id.btnNewBuild);
+        btnBuild.setOnClickListener(v -> {
+            Intent intent = new Intent(this,BudgetNewBuildActivity.class);
+            intent.putExtra("nameSurname",etNameSurnames.getText().toString());
+            intent.putExtra("street",etStreet.getText().toString());
+            intent.putExtra("postalCode",etPostalCode.getText().toString());
+            intent.putExtra("municipality",actvMunicipality.getText().toString());
+            startActivity(intent);
+        });
+
         ArrayList<String> provinces = new ArrayList<>(Arrays.asList("Barcelona"));
-        Spinner spProvince=findViewById(R.id.spProvince);
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
+        Spinner spProvince = findViewById(R.id.spProvince);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spProvince.setAdapter(adapter);
 
@@ -39,23 +61,22 @@ public class GenericBudgetActivity extends BaseActivity {
         call.enqueue(new Callback<Municipi>() {
             @Override
             public void onResponse(Call<Municipi> call, Response<Municipi> response) {
-                loadDataList(response.body());
+                if (response.body() != null) {
+                    loadDataList(response.body());
+                }
             }
 
             @Override
             public void onFailure(Call<Municipi> call, Throwable throwable) {
-                Toast.makeText(GenericBudgetActivity.this, "Unable to load elements", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
-    protected int getLayoutResource() {
-        return R.layout.activity_generic_budget;
-    }
+    protected int getLayoutResource() { return R.layout.activity_budget_client_data; }
 
     private void loadDataList(Municipi municipi) {
-        AutoCompleteTextView actvMunicipality = (AutoCompleteTextView) findViewById(R.id.actvMunicipality);
+        AutoCompleteTextView actvMunicipality = findViewById(R.id.actvMunicipality);
         actvMunicipality.setThreshold(3);
         List<Element> elements = municipi.getElements();
         List<String> names = new ArrayList<>();

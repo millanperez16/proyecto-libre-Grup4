@@ -3,6 +3,8 @@ package com.example.frontend.impl;
 
 import android.content.Context;
 
+import androidx.annotation.Nullable;
+
 import com.example.frontend.R;
 import com.example.frontend.interfaces.ApiService;
 
@@ -25,9 +27,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiServiceImpl {
     private static ApiService apiService;
-    private static final String BASE_URL = "https://do.diba.cat/api/dataset/municipis/";
-    private static final String BASE_URL2 = "https://gestorapi.gencat.cat/dadesobertes/consulta/consultadades";
-    private static final String BASE_URL_REGISTER = "https://192.168.1.133:8442/clientes/";
+    private static final String URL_MUNICIPIS = "https://do.diba.cat/api/dataset/municipis/";
+    private static final String URL_REGISTER = "https://192.168.9.163:8442/clientes/";
+    private static final String URL_LOGIN = "https://192.168.9.163:8442/authenticate/";
     private static Context contextApp;
 
     public static ApiService getApiServiceMunicipi(String like) {
@@ -41,7 +43,7 @@ public class ApiServiceImpl {
 
         if (apiService == null) {
             Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
-                    .baseUrl(BASE_URL + "camp-municipi_transliterat-like/" + like + "/")
+                    .baseUrl(URL_MUNICIPIS + "camp-municipi_transliterat-like/" + like + "/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
@@ -67,7 +69,7 @@ public class ApiServiceImpl {
 
         if (apiService == null) {
             Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
-                    .baseUrl(BASE_URL_REGISTER)
+                    .baseUrl(URL_REGISTER)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
@@ -76,6 +78,33 @@ public class ApiServiceImpl {
         return apiService;
     }
 
+    public static ApiService getApiServiceLoginUser(Context context) {
+        // Creamos un interceptor y le indicamos el log level a usar
+        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        contextApp = context;
+
+        // Asociamos el interceptor a las peticiones
+        final OkHttpClient cli = getClient();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if (cli != null){
+            httpClient = cli.newBuilder();
+            httpClient.addInterceptor(logging);
+        }
+
+        if (apiService == null) {
+            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
+                    .baseUrl(URL_LOGIN)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(httpClient.build())
+                    .build();
+            apiService = retrofitSingleton.create(ApiService.class);
+        }
+        return apiService;
+    }
+
+    @Nullable
     public static OkHttpClient getClient(){
         try{
             InputStream inputStream = contextApp.getResources().openRawResource(R.raw.euroconstrucciones);

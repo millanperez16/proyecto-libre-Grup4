@@ -58,7 +58,7 @@ public class RegisterActivity extends BaseActivity {
     public void createUser() {
         if (validateUser()) {
             User user = new User(etName.getText().toString(), etMail.getText().toString(), etPhone.getText().toString(), etPasswd.getText().toString());
-            ApiService service = ApiServiceImpl.getApiServiceNewUser(this);
+            ApiService service = ApiServiceImpl.getApiServiceNewUser(RegisterActivity.this);
             Call<User> call = service.registerNewUser(user);
             call.enqueue(new Callback<User>() {
                 @Override
@@ -72,7 +72,6 @@ public class RegisterActivity extends BaseActivity {
                     builder.setMessage(throwable.getMessage());
                     builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
                     builder.show();
-                    //Toast.makeText(getApplicationContext(), getString(R.string.register_submit_fail), Toast.LENGTH_SHORT).show();
                 }
             });
         }

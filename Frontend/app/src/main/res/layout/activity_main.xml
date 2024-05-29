@@ -19,17 +19,17 @@
             <include layout="@layout/toolbar_layout"/>
 
             <TextView
-                android:id="@+id/tvLoginName"
+                android:id="@+id/tvLoginMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login_name" />
+                android:text="@string/login_mail" />
 
             <EditText
-                android:id="@+id/etLoginName"
+                android:id="@+id/etLoginMail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:hint="@string/login_name"
+                android:hint="@string/login_mail"
                 android:inputType="text" />
 
             <TextView
@@ -79,10 +79,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_forgot_pwd" />
 
-            <ListView
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
