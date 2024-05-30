@@ -15,4 +15,7 @@ public interface ApiService {
 
     @POST("save")
     Call<User> registerNewUser(@Body User user);
+
+    @POST
+    Call<User> loginUser(@Body User user);
 }

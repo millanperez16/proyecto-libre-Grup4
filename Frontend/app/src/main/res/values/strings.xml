@@ -10,7 +10,7 @@
     <string name="toolbar_english">English</string>
     <string name="toolbar_spanish">Spanish</string>
     <string name="toolbar_catalan">Catalan</string>
-    <string name="login_name">E-Mail:</string>
+    <string name="login_mail">E-Mail:</string>
     <string name="login_pwd">Password:</string>
     <string name="login_login">Login</string>
     <string name="login_no_account">You don\'t have an account?</string>
@@ -22,15 +22,31 @@
     <string name="register_pwd">Password:</string>
     <string name="register_pwd_confirm">Confirm Password:</string>
     <string name="register_register">Register</string>
-    <string name="register_submit_success" translatable="false">Register successful</string>
-    <string name="register_submit_fail" translatable="false">Something went wrong</string>
+    <string name="register_submit_success">Register successful</string>
+    <string name="register_submit_fail">Something went wrong</string>
     <string name="generic_title"><u>Client Data</u></string>
     <string name="generic_full_name">Name and Surnames:</string>
     <string name="generic_street">Street:</string>
     <string name="generic_postal_code">Postal Code:</string>
     <string name="generic_municipality">Municipality:</string>
     <string name="generic_province">Province:</string>
-    <string name="alert_message_empty" translatable="false">All fields need to be filled.</string>
-    <string name="alert_message_pwd" translatable="false">Password and confirmation do not match.</string>
-    <string name="alert_button_ok" translatable="false">OK</string>
+    <string name="generic_btn_new_build">New Build</string>
+    <string name="generic_btn_reform">Reform</string>
+    <string name="generic_choose_budget">Please choose a budget type:</string>
+    <string name="alert_message_empty">All fields need to be filled.</string>
+    <string name="alert_message_pwd">Password and confirmation do not match.</string>
+    <string name="alert_button_ok">OK</string>
+    <string name="budget_button_submit" translatable="false">Submit Budget</string>
+    <string name="build_title" translatable="false"><u>New Build</u></string>
+    <string name="build_total_m2" translatable="false">Total m²:</string>
+    <string name="build_material_quality" translatable="false">Quality of Materials:</string>
+    <string name="build_material_low" translatable="false">Low</string>
+    <string name="build_material_mid" translatable="false">Medium</string>
+    <string name="build_material_high" translatable="false">High</string>
+    <string name="reform_bathroom_title" translatable="false">Reform Bathroom</string>
+    <string name="reform_bathroom_length" translatable="false">Length (m²):</string>
+    <string name="reform_bathroom_height" translatable="false">Height (m²):</string>
+    <string name="reform_bathroom_width" translatable="false">Width (m²):</string>
+    <string name="reform_bathroom_tile_price" translatable="false">Tile Price (€/m²):</string>
+    <string name="reform_bathroom_number_pieces" translatable="false">Number of Bathroom Pieces:</string>
 </resources>

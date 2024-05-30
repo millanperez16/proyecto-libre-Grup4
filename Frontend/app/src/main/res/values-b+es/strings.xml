@@ -10,7 +10,7 @@
     <string name="toolbar_english">Inglés</string>
     <string name="toolbar_spanish">Español</string>
     <string name="toolbar_catalan">Catalán</string>
-    <string name="login_name">E-Mail:</string>
+    <string name="login_mail">E-Mail:</string>
     <string name="login_pwd">Contraseña:</string>
     <string name="login_login">Iniciar sesión</string>
     <string name="login_no_account">No tienes cuenta de usuario?</string>
@@ -22,10 +22,18 @@
     <string name="register_pwd">Contraseña:</string>
     <string name="register_pwd_confirm">Confirmar contraseña:</string>
     <string name="register_register">Registrarme</string>
+    <string name="register_submit_success">Registro completado con éxito</string>
+    <string name="register_submit_fail">Se ha producido un error</string>
     <string name="generic_title"><u>Datos del cliente</u></string>
     <string name="generic_full_name">Nombre y apellidos:</string>
     <string name="generic_street">Calle:</string>
     <string name="generic_postal_code">Código postal:</string>
     <string name="generic_municipality">Municipio:</string>
     <string name="generic_province">Provincia:</string>
+    <string name="generic_btn_new_build">Obra nueva</string>
+    <string name="generic_btn_reform">Reforma</string>
+    <string name="generic_choose_budget">Elige un tipo de presupuesto:</string>
+    <string name="alert_message_empty">Deben rellenarse todos los campos.</string>
+    <string name="alert_message_pwd">La contraseña y su confirmación no coinciden.</string>
+    <string name="alert_button_ok">Aceptar</string>
 </resources>

@@ -10,7 +10,7 @@
     <string name="toolbar_english">Anglès</string>
     <string name="toolbar_spanish">Espanyol</string>
     <string name="toolbar_catalan">Català</string>
-    <string name="login_name">E-Mail:</string>
+    <string name="login_mail">E-Mail:</string>
     <string name="login_pwd">Contrasenya:</string>
     <string name="login_login">Iniciar sessió</string>
     <string name="login_no_account">No tens compte d\'usuari?</string>
@@ -22,10 +22,18 @@
     <string name="register_pwd">Contrasenya:</string>
     <string name="register_pwd_confirm">Confirmar contrasenya:</string>
     <string name="register_register">Registrar-me</string>
+    <string name="register_submit_success">Registre completatamb èxit</string>
+    <string name="register_submit_fail">S\'ha produït un error</string>
     <string name="generic_title"><u>Dades del client</u></string>
     <string name="generic_full_name">Nom i cognoms:</string>
     <string name="generic_street">Carrer:</string>
     <string name="generic_postal_code">Codi postal:</string>
     <string name="generic_municipality">Municipi:</string>
     <string name="generic_province">Província:</string>
+    <string name="generic_btn_new_build">Obra nova</string>
+    <string name="generic_btn_reform">Reforma</string>
+    <string name="generic_choose_budget">Trieu un tipus de pressupost:</string>
+    <string name="alert_message_empty">Cal omplir tots els camps.</string>
+    <string name="alert_message_pwd">La contrasenya i la seva confirmació no coincideixen.</string>
+    <string name="alert_button_ok">Acceptar</string>
 </resources>
