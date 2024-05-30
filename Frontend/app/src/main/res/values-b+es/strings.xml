@@ -31,7 +31,7 @@
     <string name="generic_municipality">Municipio:</string>
     <string name="generic_province">Provincia:</string>
     <string name="generic_btn_new_build">Obra nueva</string>
-    <string name="generic_btn_reform">Reforma</string>
+    <string name="generic_btn_reform_kitchen">Reforma</string>
     <string name="generic_choose_budget">Elige un tipo de presupuesto:</string>
     <string name="alert_message_empty">Deben rellenarse todos los campos.</string>
     <string name="alert_message_pwd">La contraseña y su confirmación no coinciden.</string>

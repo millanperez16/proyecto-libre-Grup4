@@ -33,7 +33,7 @@
             <EditText
                 android:id="@+id/etBudgetBuildM2"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/build_total_m2"
                 android:inputType="number" />

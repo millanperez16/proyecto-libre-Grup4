@@ -31,7 +31,8 @@
     <string name="generic_municipality">Municipality:</string>
     <string name="generic_province">Province:</string>
     <string name="generic_btn_new_build">New Build</string>
-    <string name="generic_btn_reform">Reform</string>
+    <string name="generic_btn_reform_kitchen">Reform Kitchen</string>
+    <string name="generic_btn_reform_bathroom" translatable="false">Reform Bathroom</string>
     <string name="generic_choose_budget">Please choose a budget type:</string>
     <string name="alert_message_empty">All fields need to be filled.</string>
     <string name="alert_message_pwd">Password and confirmation do not match.</string>
@@ -43,10 +44,16 @@
     <string name="build_material_low" translatable="false">Low</string>
     <string name="build_material_mid" translatable="false">Medium</string>
     <string name="build_material_high" translatable="false">High</string>
-    <string name="reform_bathroom_title" translatable="false">Reform Bathroom</string>
+    <string name="reform_bathroom_title" translatable="false"><u>Reform Bathroom</u></string>
     <string name="reform_bathroom_length" translatable="false">Length (m²):</string>
     <string name="reform_bathroom_height" translatable="false">Height (m²):</string>
     <string name="reform_bathroom_width" translatable="false">Width (m²):</string>
     <string name="reform_bathroom_tile_price" translatable="false">Tile Price (€/m²):</string>
-    <string name="reform_bathroom_number_pieces" translatable="false">Number of Bathroom Pieces:</string>
+    <string name="reform_bathroom_pieces_add" translatable="false">Number of Bathroom Pieces to Add:</string>
+    <string name="reform_bathroom_pieces_remove" translatable="false">Number of Bathroom Pieces to Remove:</string>
+    <string name="reform_bathroom_pieces_num_none" translatable="false">None</string>
+    <string name="reform_bathroom_pieces_num_one" translatable="false">1</string>
+    <string name="reform_bathroom_pieces_num_two" translatable="false">2</string>
+    <string name="reform_bathroom_pieces_num_three" translatable="false">3</string>
+    <string name="reform_bathroom_pieces_num_four" translatable="false">4</string>
 </resources>

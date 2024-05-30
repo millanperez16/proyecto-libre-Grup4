@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.Element;
@@ -33,19 +35,35 @@ public class BudgetClientDataActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        etNameSurnames=findViewById(R.id.etNameSurnames);
-        etStreet=findViewById(R.id.etStreet);
-        etPostalCode=findViewById(R.id.etPostalCode);
-        actvMunicipality=findViewById(R.id.actvMunicipality);
+        etNameSurnames = findViewById(R.id.etNameSurnames);
+        etStreet = findViewById(R.id.etStreet);
+        etPostalCode = findViewById(R.id.etPostalCode);
+        actvMunicipality = findViewById(R.id.actvMunicipality);
 
         Button btnBuild = findViewById(R.id.btnNewBuild);
         btnBuild.setOnClickListener(v -> {
-            Intent intent = new Intent(this,BudgetNewBuildActivity.class);
-            intent.putExtra("nameSurname",etNameSurnames.getText().toString());
-            intent.putExtra("street",etStreet.getText().toString());
-            intent.putExtra("postalCode",etPostalCode.getText().toString());
-            intent.putExtra("municipality",actvMunicipality.getText().toString());
-            startActivity(intent);
+            Intent intent;
+            if ((intent = fillIntentClientData(BudgetNewBuildActivity.class)) != null) {
+                startActivity(intent);
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(getString(R.string.alert_message_empty));
+                builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
+                builder.show();
+            }
+        });
+
+        Button btnBathroom = findViewById(R.id.btnReformBathroom);
+        btnBathroom.setOnClickListener(v -> {
+            Intent intent;
+            if ((intent = fillIntentClientData(BudgetReformBathroomActivity.class)) != null) {
+                startActivity(intent);
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(getString(R.string.alert_message_empty));
+                builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
+                builder.show();
+            }
         });
 
         ArrayList<String> provinces = new ArrayList<>(Arrays.asList("Barcelona"));
@@ -73,7 +91,9 @@ public class BudgetClientDataActivity extends BaseActivity {
     }
 
     @Override
-    protected int getLayoutResource() { return R.layout.activity_budget_client_data; }
+    protected int getLayoutResource() {
+        return R.layout.activity_budget_client_data;
+    }
 
     private void loadDataList(Municipi municipi) {
         AutoCompleteTextView actvMunicipality = findViewById(R.id.actvMunicipality);
@@ -91,5 +111,25 @@ public class BudgetClientDataActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
+    }
+
+    private Intent fillIntentClientData(Class nextForm) {
+        if (!validateFormData()) {
+            return null;
+        }
+        Intent intent = new Intent(this, nextForm);
+        intent.putExtra("nameSurname", etNameSurnames.getText().toString());
+        intent.putExtra("street", etStreet.getText().toString());
+        intent.putExtra("postalCode", etPostalCode.getText().toString());
+        intent.putExtra("municipality", actvMunicipality.getText().toString());
+        return intent;
+    }
+
+    private boolean validateFormData() {
+        String name = etNameSurnames.getText().toString();
+        String street = etStreet.getText().toString();
+        String postalCode = etPostalCode.getText().toString();
+        String municipality = actvMunicipality.getText().toString();
+        return !name.isEmpty() && !street.isEmpty() && !postalCode.isEmpty() && !municipality.isEmpty();
     }
 }
