@@ -2,7 +2,6 @@ package com.example.frontend.impl;
 
 
 import android.content.Context;
-import android.security.keystore.KeyInfo;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -15,8 +14,6 @@ import java.security.KeyStore;
 import java.security.Provider;
 import java.security.SecureRandom;
 import java.security.Security;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -31,12 +28,13 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import org.bouncycastle.jcajce.PKCS12Key;
-import org.bouncycastle.jcajce.provider.keystore.PKCS12;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class ApiServiceImpl {
     private static ApiService apiService;
+    private static final String BASE_URL = "https://do.diba.cat/api/dataset/municipis/";
+    private static final String BASE_URL2 = "https://gestorapi.gencat.cat/dadesobertes/consulta/consultadades";
+    private static final String BASE_URL_REGISTER = "https://localhost:8442/clientes/";
     private static final String URL_MUNICIPIS = "https://do.diba.cat/api/dataset/municipis/";
     private static final String URL_REGISTER = "https://localhost:8442/clientes/";
     private static final String URL_LOGIN = "https://localhost:8442/authenticate/";
@@ -172,6 +170,7 @@ public class ApiServiceImpl {
     public static OkHttpClient getClient(){
         try{
             InputStream inputStream = contextApp.getResources().openRawResource(R.raw.euroconstrucciones);
+
             if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
                 Security.addProvider(new BouncyCastleProvider());
             }
