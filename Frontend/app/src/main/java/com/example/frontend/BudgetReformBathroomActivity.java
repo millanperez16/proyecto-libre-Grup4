@@ -1,21 +1,25 @@
 package com.example.frontend;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.frontend.models.Budget;
+import com.example.frontend.impl.ApiServiceImpl;
+import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.BudgetReformBathroom;
 import com.example.frontend.models.User;
 
-public class BudgetReformBathroomActivity extends BaseActivity{
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class BudgetReformBathroomActivity extends BaseActivity {
 
     EditText etBathroomHeight;
     EditText etBathroomWidth;
@@ -27,34 +31,59 @@ public class BudgetReformBathroomActivity extends BaseActivity{
     Float width;
     Float length;
     Float tiles;
-    RadioButton btnAdd;
+    RadioButton rbAdd;
     Integer piecesAdd;
-    RadioButton btnRemove;
+    RadioButton rbRemove;
     Integer piecesRemove;
+    Button btnReformBathroomSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Button btnReformBathroomSubmit = findViewById(R.id.btnReformBathroomSubmit);
+        etBathroomHeight=findViewById(R.id.etBudgetReformBathroomHeight);
+        etBathroomWidth=findViewById(R.id.etBudgetReformBathroomWidth);
+        etBathroomLength=findViewById(R.id.etBudgetReformBathroomLength);
+        etBathroomTiles=findViewById(R.id.etBudgetReformBathroomTiles);
+        rgPiecesAdd=findViewById(R.id.rgBathroomPiecesAdd);
+        rgPiecesRemove=findViewById(R.id.rgBathroomPiecesRemove);
+
+        btnReformBathroomSubmit = findViewById(R.id.btnReformBathroomSubmit);
         btnReformBathroomSubmit.setOnClickListener(v -> {
-            if(!validateFormData()){
+            if (!validateFormData()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(getString(R.string.alert_message_empty));
                 builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
                 builder.show();
-            }else{
-                Bundle bundle=getIntent().getExtras();
-                User user = new User(bundle.getString("nameSurname"),bundle.getString("street"),bundle.getString("postalCode"),bundle.getString("municipality"));
-                Budget bathroomBudget=new BudgetReformBathroom(user,height,width,length,tiles,piecesAdd,piecesRemove);
-                
+            } else {
+                Bundle bundle = getIntent().getExtras();
+                User user = new User(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"));
+                BudgetReformBathroom bathroomBudget = new BudgetReformBathroom(user, height, width, length, tiles, piecesAdd, piecesRemove);
+                ApiService service = ApiServiceImpl.getApiServiceBathroomBudget(BudgetReformBathroomActivity.this);
+                Call<BudgetReformBathroom> call = service.createBathroomBudget(bathroomBudget);
+                call.enqueue(new Callback<BudgetReformBathroom>() {
+                    @Override
+                    public void onResponse(Call<BudgetReformBathroom> call, Response<BudgetReformBathroom> response) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.register_submit_success), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<BudgetReformBathroom> call, Throwable throwable) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(BudgetReformBathroomActivity.this);
+                        builder.setMessage(throwable.getMessage());
+                        builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
+                        builder.show();
+                    }
+                });
             }
         });
 
     }
 
     @Override
-    protected int getLayoutResource() { return R.layout.activity_budget_reform_bathroom; }
+    protected int getLayoutResource() {
+        return R.layout.activity_budget_reform_bathroom;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,15 +91,15 @@ public class BudgetReformBathroomActivity extends BaseActivity{
         return true;
     }
 
-    private boolean validateFormData(){
-        height=Float.parseFloat(etBathroomHeight.getText().toString());
-        width=Float.parseFloat(etBathroomWidth.getText().toString());
-        length=Float.parseFloat(etBathroomLength.getText().toString());
-        tiles=Float.parseFloat(etBathroomTiles.getText().toString());
-        btnAdd = findViewById(rgPiecesAdd.getCheckedRadioButtonId());
-        piecesAdd= Integer.parseInt(btnAdd.getText().toString());
-        btnRemove = findViewById(rgPiecesRemove.getCheckedRadioButtonId());
-        piecesRemove= Integer.parseInt(btnRemove.getText().toString());
-        return !height.isNaN() && !width.isNaN() && !length.isNaN() && !tiles.isNaN() && piecesAdd!=null && piecesRemove!=null;
+    private boolean validateFormData() {
+        height = Float.parseFloat(etBathroomHeight.getText().toString());
+        width = Float.parseFloat(etBathroomWidth.getText().toString());
+        length = Float.parseFloat(etBathroomLength.getText().toString());
+        tiles = Float.parseFloat(etBathroomTiles.getText().toString());
+        rbAdd = findViewById(rgPiecesAdd.getCheckedRadioButtonId());
+        piecesAdd = Integer.parseInt(rbAdd.getText().toString());
+        rbRemove = findViewById(rgPiecesRemove.getCheckedRadioButtonId());
+        piecesRemove = Integer.parseInt(rbRemove.getText().toString());
+        return !height.isNaN() && !width.isNaN() && !length.isNaN() && !tiles.isNaN() && piecesAdd != null && piecesRemove != null;
     }
 }

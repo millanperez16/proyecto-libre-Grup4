@@ -1,5 +1,7 @@
 package com.example.frontend.interfaces;
 
+import com.example.frontend.models.BudgetNewBuild;
+import com.example.frontend.models.BudgetReformBathroom;
 import com.example.frontend.models.Municipi;
 import com.example.frontend.models.User;
 
@@ -18,4 +20,10 @@ public interface ApiService {
 
     @POST
     Call<User> loginUser(@Body User user);
+
+    @POST
+    Call<BudgetReformBathroom> createBathroomBudget(@Body BudgetReformBathroom budgetReformBathroom);
+
+    @POST
+    Call<BudgetNewBuild> createNewBuildBudget(@Body BudgetNewBuild budgetNewBuild);
 }

@@ -40,6 +40,8 @@ public class ApiServiceImpl {
     private static final String URL_MUNICIPIS = "https://do.diba.cat/api/dataset/municipis/";
     private static final String URL_REGISTER = "https://localhost:8442/clientes/";
     private static final String URL_LOGIN = "https://localhost:8442/authenticate/";
+    private static final String URL_BATHROOM = "https://localhost:8442/presupuestos/aseos/saveRefAseo/";
+    private static final String URL_NEW_BUILD = "https://localhost:8442/presupuestos/obranueva/saveObra/";
     private static Context contextApp;
 
     public static ApiService getApiServiceMunicipi(String like) {
@@ -106,6 +108,58 @@ public class ApiServiceImpl {
         if (apiService == null) {
             Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
                     .baseUrl(URL_LOGIN)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(httpClient.build())
+                    .build();
+            apiService = retrofitSingleton.create(ApiService.class);
+        }
+        return apiService;
+    }
+
+    public static ApiService getApiServiceNewBuildBudget(Context context) {
+        // Creamos un interceptor y le indicamos el log level a usar
+        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        contextApp = context;
+
+        // Asociamos el interceptor a las peticiones
+        final OkHttpClient cli = getClient();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if (cli != null){
+            httpClient = cli.newBuilder();
+            httpClient.addInterceptor(logging);
+        }
+
+        if (apiService == null) {
+            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
+                    .baseUrl(URL_NEW_BUILD)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(httpClient.build())
+                    .build();
+            apiService = retrofitSingleton.create(ApiService.class);
+        }
+        return apiService;
+    }
+
+    public static ApiService getApiServiceBathroomBudget(Context context) {
+        // Creamos un interceptor y le indicamos el log level a usar
+        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        contextApp = context;
+
+        // Asociamos el interceptor a las peticiones
+        final OkHttpClient cli = getClient();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if (cli != null){
+            httpClient = cli.newBuilder();
+            httpClient.addInterceptor(logging);
+        }
+
+        if (apiService == null) {
+            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
+                    .baseUrl(URL_BATHROOM)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
