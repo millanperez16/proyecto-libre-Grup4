@@ -10,6 +10,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.os.LocaleListCompat;
 import androidx.fragment.app.FragmentManager;
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+import java.security.Security;
+
 public abstract class BaseActivity extends AppCompatActivity {
     Toolbar toolbar;
 
@@ -18,6 +22,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResource());
         configureToolbar();
+        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
+            Security.addProvider(new BouncyCastleProvider());
+        }
     }
 
     protected abstract int getLayoutResource();

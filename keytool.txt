@@ -1,0 +1,3 @@
+keytool -importkeystore -srckeystore mykeystore.jks -destkeystore mykeystore.p12 -srcstoretype JKS -deststoretype PKCS12 -srcalias mykeyalias -deststorepass newpassword -srcstorepass oldpassword
+
+Replace mykeystore.jks, mykeystore.p12, mykeyalias, newpassword, and oldpassword with your actual file names, alias, and passwords.

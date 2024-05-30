@@ -2,6 +2,8 @@ package com.example.frontend.impl;
 
 
 import android.content.Context;
+import android.security.keystore.KeyInfo;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -10,7 +12,11 @@ import com.example.frontend.interfaces.ApiService;
 
 import java.io.InputStream;
 import java.security.KeyStore;
+import java.security.Provider;
 import java.security.SecureRandom;
+import java.security.Security;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -25,11 +31,15 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import org.bouncycastle.jcajce.PKCS12Key;
+import org.bouncycastle.jcajce.provider.keystore.PKCS12;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 public class ApiServiceImpl {
     private static ApiService apiService;
     private static final String URL_MUNICIPIS = "https://do.diba.cat/api/dataset/municipis/";
-    private static final String URL_REGISTER = "https://192.168.9.163:8442/clientes/";
-    private static final String URL_LOGIN = "https://192.168.9.163:8442/authenticate/";
+    private static final String URL_REGISTER = "https://localhost:8442/clientes/";
+    private static final String URL_LOGIN = "https://localhost:8442/authenticate/";
     private static Context contextApp;
 
     public static ApiService getApiServiceMunicipi(String like) {
@@ -108,8 +118,13 @@ public class ApiServiceImpl {
     public static OkHttpClient getClient(){
         try{
             InputStream inputStream = contextApp.getResources().openRawResource(R.raw.euroconstrucciones);
-
-            KeyStore keyStore = KeyStore.getInstance("pkcs12");
+            if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
+                Security.addProvider(new BouncyCastleProvider());
+            }
+            for(Provider p:Security.getProviders()){
+                Log.d("Provider",p.toString());
+            }
+            KeyStore keyStore = KeyStore.getInstance("PKCS12",BouncyCastleProvider.PROVIDER_NAME);
             keyStore.load(inputStream,"euroconstrucciones".toCharArray());
 
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("X509");
