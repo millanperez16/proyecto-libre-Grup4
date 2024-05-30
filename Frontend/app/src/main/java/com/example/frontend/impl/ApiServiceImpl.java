@@ -14,6 +14,7 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
@@ -26,7 +27,7 @@ public class ApiServiceImpl {
     private static ApiService apiService;
     private static final String BASE_URL = "https://do.diba.cat/api/dataset/municipis/";
     private static final String BASE_URL2 = "https://gestorapi.gencat.cat/dadesobertes/consulta/consultadades";
-    private static final String BASE_URL_REGISTER = "https://192.168.9.163:8442/clientes/";
+    private static final String BASE_URL_REGISTER = "https://localhost:8442/clientes/";
     private static Context contextApp;
 
     public static ApiService getApiServiceMunicipi(String like) {
@@ -88,13 +89,21 @@ public class ApiServiceImpl {
 
             TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
+            TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
+            X509TrustManager trustManager = null;
+            for (TrustManager tm : trustManagers){
+                if (tm instanceof X509TrustManager){
+                    trustManager = (X509TrustManager) tm;
+                }
+            }
 
             SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(keyManagers, trustManagerFactory.getTrustManagers(), new SecureRandom());
 
             SSLSocketFactory socketFactory = sslContext.getSocketFactory();
             OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder().
-                    sslSocketFactory(socketFactory, (X509TrustManager) trustManagerFactory);
+                    sslSocketFactory(socketFactory, trustManager)
+                    .hostnameVerifier((hostname, session) -> true);
 
             return clientBuilder.build();
 
