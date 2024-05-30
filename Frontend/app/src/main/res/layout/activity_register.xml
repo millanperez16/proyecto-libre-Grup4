@@ -58,7 +58,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="@string/register_phone"
-                android:inputType="phone" />
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/tvRegisterPwd"

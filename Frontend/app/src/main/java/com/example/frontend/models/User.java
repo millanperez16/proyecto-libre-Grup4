@@ -1,5 +1,8 @@
 package com.example.frontend.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String nombre;
     private String correo;

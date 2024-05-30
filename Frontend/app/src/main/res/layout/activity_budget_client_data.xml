@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BudgetClientDataActivity">
@@ -102,24 +103,23 @@
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnNewBuild"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generic_btn_new_build" />
 
-                <Button
-                    android:id="@+id/btnNewBuild"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/generic_btn_new_build" />
+            <Button
+                android:id="@+id/btnReformKitchen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generic_btn_reform_kitchen" />
 
-                <Button
-                    android:id="@+id/btnReform"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/generic_btn_reform" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/btnReformBathroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/generic_btn_reform_bathroom" />
 
         </LinearLayout>
 

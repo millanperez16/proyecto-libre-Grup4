@@ -10,138 +10,166 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:gravity="center"
+            android:orientation="vertical">
 
             <include layout="@layout/toolbar_layout" />
 
             <TextView
-                android:id="@+id/tvBudgetReformKitchenTitle"
+                android:id="@+id/tvBudgetReformBathroomTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/reform_bathroom_title"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvBudgetReformBathroomHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/reform_bathroom_height" />
 
             <EditText
-                android:id="@+id/editTextNumber2"
+                android:id="@+id/etBudgetReformBathroomHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/reform_bathroom_height"
                 android:inputType="number" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tvBudgetReformBathroomWidth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/reform_bathroom_width" />
 
             <EditText
-                android:id="@+id/editTextNumber3"
+                android:id="@+id/etBudgetReformBathroomWidth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/reform_bathroom_height"
                 android:inputType="number" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tvBudgetReformBathroomLength"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/reform_bathroom_length" />
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/etBudgetReformBathroomLength"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/reform_bathroom_length"
                 android:inputType="number" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tvBudgetReformBathroomTiles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/reform_bathroom_tile_price" />
 
             <EditText
-                android:id="@+id/editTextNumber4"
+                android:id="@+id/etBudgetReformBathroomTiles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/editTextNumber5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
+                android:hint="@string/reform_bathroom_tile_price"
                 android:inputType="number" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/tvBudgetReformBathroomPiecesAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/reform_bathroom_pieces_add" />
 
             <RadioGroup
+                android:id="@+id/rgBathroomPiecesAdd"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/rbBathroomPiecesAddNone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_none" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/rbBathroomPiecesAddOne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_one" />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/rbBathroomPiecesAddTwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_two" />
 
                 <RadioButton
-                    android:id="@+id/radioButton4"
+                    android:id="@+id/rbBathroomPiecesAddThree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_three" />
+
+                <RadioButton
+                    android:id="@+id/rbBathroomPiecesAddFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reform_bathroom_pieces_num_four" />
             </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvBudgetReformBathroomPiecesRemove"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reform_bathroom_pieces_remove" />
 
             <RadioGroup
+                android:id="@+id/rgBathroomPiecesRemove"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <RadioButton
-                    android:id="@+id/radioButton5"
+                    android:id="@+id/rbBathroomPiecesRemoveNone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_none" />
 
                 <RadioButton
-                    android:id="@+id/radioButton6"
+                    android:id="@+id/rbBathroomPiecesRemoveOne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_one" />
 
                 <RadioButton
-                    android:id="@+id/radioButton7"
+                    android:id="@+id/rbBathroomPiecesRemoveTwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_two" />
 
                 <RadioButton
-                    android:id="@+id/radioButton8"
+                    android:id="@+id/rbBathroomPiecesRemoveThree"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="RadioButton" />
+                    android:text="@string/reform_bathroom_pieces_num_three" />
+
+                <RadioButton
+                    android:id="@+id/rbBathroomPiecesRemoveFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reform_bathroom_pieces_num_four" />
+
             </RadioGroup>
+
+            <Button
+                android:id="@+id/btnReformBathroomSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/budget_button_submit" />
 
 
         </LinearLayout>
