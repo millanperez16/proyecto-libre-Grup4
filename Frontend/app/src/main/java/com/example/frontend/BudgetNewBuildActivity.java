@@ -85,13 +85,13 @@ public class BudgetNewBuildActivity extends BaseActivity {
         rbSelectedQuality = findViewById(rgMaterialsQuality.getCheckedRadioButtonId());
         String selectedQuality = rbSelectedQuality.getText().toString();
         switch (selectedQuality) {
-            case "low":
+            case "Low":
                 materialsQuality = low;
                 break;
-            case "medium":
+            case "Medium":
                 materialsQuality = medium;
                 break;
-            case "high":
+            case "High":
                 materialsQuality = high;
                 break;
             default:

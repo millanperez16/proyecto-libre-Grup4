@@ -1,7 +1,9 @@
 package com.example.frontend.interfaces;
 
+import com.example.frontend.BudgetReformKitchenActivity;
 import com.example.frontend.models.BudgetNewBuild;
 import com.example.frontend.models.BudgetReformBathroom;
+import com.example.frontend.models.BudgetReformKitchen;
 import com.example.frontend.models.Municipi;
 import com.example.frontend.models.User;
 
@@ -18,12 +20,14 @@ public interface ApiService {
     @POST("save")
     Call<User> registerNewUser(@Body User user);
 
-    @POST
+    @POST("authenticate")
     Call<User> loginUser(@Body User user);
 
-    @POST
+    @POST("saveRefAseo")
     Call<BudgetReformBathroom> createBathroomBudget(@Body BudgetReformBathroom budgetReformBathroom);
 
-    @POST
+    @POST("saveObra")
     Call<BudgetNewBuild> createNewBuildBudget(@Body BudgetNewBuild budgetNewBuild);
+    @POST("saveRefCocina")
+    Call<BudgetReformKitchen> createKitchenBudget(@Body BudgetReformKitchen budgetReformKitchen);
 }

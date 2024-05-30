@@ -30,7 +30,9 @@ public class BudgetClientDataActivity extends BaseActivity {
     EditText etStreet;
     EditText etPostalCode;
     AutoCompleteTextView actvMunicipality;
-
+    Button btnBuild;
+    Button btnBathroom;
+    Button btnKitchen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class BudgetClientDataActivity extends BaseActivity {
         etPostalCode = findViewById(R.id.etPostalCode);
         actvMunicipality = findViewById(R.id.actvMunicipality);
 
-        Button btnBuild = findViewById(R.id.btnNewBuild);
+        btnBuild = findViewById(R.id.btnNewBuild);
         btnBuild.setOnClickListener(v -> {
             Intent intent;
             if ((intent = fillIntentClientData(BudgetNewBuildActivity.class)) != null) {
@@ -53,10 +55,23 @@ public class BudgetClientDataActivity extends BaseActivity {
             }
         });
 
-        Button btnBathroom = findViewById(R.id.btnReformBathroom);
+        btnBathroom = findViewById(R.id.btnReformBathroom);
         btnBathroom.setOnClickListener(v -> {
             Intent intent;
             if ((intent = fillIntentClientData(BudgetReformBathroomActivity.class)) != null) {
+                startActivity(intent);
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(getString(R.string.alert_message_empty));
+                builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
+                builder.show();
+            }
+        });
+
+        btnKitchen = findViewById(R.id.btnReformKitchen);
+        btnKitchen.setOnClickListener(v -> {
+            Intent intent;
+            if ((intent = fillIntentClientData(BudgetReformKitchenActivity.class)) != null) {
                 startActivity(intent);
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);

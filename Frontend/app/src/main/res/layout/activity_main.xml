@@ -44,7 +44,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="@string/login_pwd"
-                android:inputType="text" />
+                android:inputType="text|textWebPassword" />
 
             <Button
                 android:id="@+id/btnLogin"

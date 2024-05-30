@@ -20,6 +20,9 @@
             android:name=".BudgetReformKitchenActivity"
             android:exported="false" />
         <activity
+            android:name=".BudgetReformBathroomActivity"
+            android:exported="false" />
+        <activity
             android:name=".BudgetClientDataActivity"
             android:exported="false" />
         <activity
