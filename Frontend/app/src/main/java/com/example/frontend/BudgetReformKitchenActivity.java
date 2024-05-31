@@ -1,6 +1,7 @@
 package com.example.frontend;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,6 +89,12 @@ public class BudgetReformKitchenActivity extends BaseActivity {
         return R.layout.activity_budget_reform_kitchen;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
     private boolean validateFormData() {
         height = Float.parseFloat(etKitchenHeight.getText().toString());
         width = Float.parseFloat(etKitchenWidth.getText().toString());
@@ -95,7 +102,7 @@ public class BudgetReformKitchenActivity extends BaseActivity {
         tiles = Float.parseFloat(etKitchenTiles.getText().toString());
         rbKitchenReno = findViewById(rgKitchenReno.getCheckedRadioButtonId());
         String selectedReno = rbKitchenReno.getText().toString();
-        selectedFactor = selectedReno.equals("Yes") ? kitchenRenoFactor : 0;
+        selectedFactor = (selectedReno.equals("Yes") || selectedReno.equals("Sí")) || selectedReno.equals("Si")? kitchenRenoFactor : 0;
         surfaceFurniture = Integer.parseInt(etKitchenSurfaceFurniture.getText().toString());
         surfaceWorktop = Integer.parseInt(etKitchenSurfaceWorktop.getText().toString());
         return !height.isNaN() && !width.isNaN() && !length.isNaN() && !tiles.isNaN() && selectedFactor != null && surfaceFurniture != null && surfaceWorktop != null;

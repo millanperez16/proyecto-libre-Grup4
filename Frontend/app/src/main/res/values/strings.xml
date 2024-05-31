@@ -32,39 +32,39 @@
     <string name="generic_province">Province:</string>
     <string name="generic_btn_new_build">New Build</string>
     <string name="generic_btn_reform_kitchen">Reform Kitchen</string>
-    <string name="generic_btn_reform_bathroom" translatable="false">Reform Bathroom</string>
+    <string name="generic_btn_reform_bathroom">Reform Bathroom</string>
     <string name="generic_choose_budget">Please choose a budget type:</string>
     <string name="alert_message_empty">All fields need to be filled.</string>
     <string name="alert_message_pwd">Password and confirmation do not match.</string>
     <string name="alert_button_ok">OK</string>
-    <string name="budget_button_submit" translatable="false">Submit Budget</string>
-    <string name="build_title" translatable="false"><u>New Build</u></string>
-    <string name="build_total_m2" translatable="false">Total m²:</string>
-    <string name="build_material_quality" translatable="false">Quality of Materials:</string>
-    <string name="build_material_low" translatable="false">Low</string>
-    <string name="build_material_mid" translatable="false">Medium</string>
-    <string name="build_material_high" translatable="false">High</string>
-    <string name="reform_bathroom_title" translatable="false"><u>Reform Bathroom</u></string>
-    <string name="reform_bathroom_length" translatable="false">Length (m²):</string>
-    <string name="reform_bathroom_height" translatable="false">Height (m²):</string>
-    <string name="reform_bathroom_width" translatable="false">Width (m²):</string>
-    <string name="reform_bathroom_tile_price" translatable="false">Tile Price (€/m²):</string>
-    <string name="reform_bathroom_pieces_add" translatable="false">Number of Bathroom Pieces to Add:</string>
-    <string name="reform_bathroom_pieces_remove" translatable="false">Number of Bathroom Pieces to Remove:</string>
-    <string name="reform_bathroom_pieces_num_none" translatable="false">None</string>
-    <string name="reform_bathroom_pieces_num_one" translatable="false">1</string>
-    <string name="reform_bathroom_pieces_num_two" translatable="false">2</string>
-    <string name="reform_bathroom_pieces_num_three" translatable="false">3</string>
-    <string name="reform_bathroom_pieces_num_four" translatable="false">4</string>
-    <string name="reform_kitchen_title" translatable="false"><u>Reform Kitchen</u></string>
-    <string name="reform_kitchen_length" translatable="false">Length (m²):</string>
-    <string name="reform_kitchen_height" translatable="false">Height (m²):</string>
-    <string name="reform_kitchen_width" translatable="false">Width (m²):</string>
-    <string name="reform_kitchen_tile_price" translatable="false">Tile Price (€/m²):</string>
-    <string name="reform_kitchen_renovation" translatable="false">Need to modify installations?</string>
-    <string name="reform_kitchen_renovation_yes" translatable="false">Yes</string>
-    <string name="reform_kitchen_renovation_no" translatable="false">No</string>
-    <string name="reform_kitchen_surface_furniture" translatable="false">Total Furniture Surface (m):</string>
-    <string name="reform_kitchen_surface_worktop" translatable="false">Total Worktop Surface (m):</string>
+    <string name="budget_button_submit">Submit Budget</string>
+    <string name="build_title"><u>New Build</u></string>
+    <string name="build_total_m2">Total m²:</string>
+    <string name="build_material_quality">Quality of Materials:</string>
+    <string name="build_material_low">Low</string>
+    <string name="build_material_mid">Medium</string>
+    <string name="build_material_high">High</string>
+    <string name="reform_bathroom_title"><u>Reform Bathroom</u></string>
+    <string name="reform_bathroom_length">Length (m²):</string>
+    <string name="reform_bathroom_height">Height (m²):</string>
+    <string name="reform_bathroom_width">Width (m²):</string>
+    <string name="reform_bathroom_tile_price">Tile Price (€/m²):</string>
+    <string name="reform_bathroom_pieces_add">Number of Bathroom Pieces to Add:</string>
+    <string name="reform_bathroom_pieces_remove">Number of Bathroom Pieces to Remove:</string>
+    <string name="reform_bathroom_pieces_num_none">None</string>
+    <string name="reform_bathroom_pieces_num_one">1</string>
+    <string name="reform_bathroom_pieces_num_two">2</string>
+    <string name="reform_bathroom_pieces_num_three">3</string>
+    <string name="reform_bathroom_pieces_num_four">4</string>
+    <string name="reform_kitchen_title"><u>Reform Kitchen</u></string>
+    <string name="reform_kitchen_length">Length (m²):</string>
+    <string name="reform_kitchen_height">Height (m²):</string>
+    <string name="reform_kitchen_width">Width (m²):</string>
+    <string name="reform_kitchen_tile_price">Tile Price (€/m²):</string>
+    <string name="reform_kitchen_renovation">Need to modify installations?</string>
+    <string name="reform_kitchen_renovation_yes">Yes</string>
+    <string name="reform_kitchen_renovation_no">No</string>
+    <string name="reform_kitchen_surface_furniture">Total Furniture Surface (m):</string>
+    <string name="reform_kitchen_surface_worktop">Total Worktop Surface (m):</string>
 
 </resources>

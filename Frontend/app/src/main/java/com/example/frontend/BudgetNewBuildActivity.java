@@ -37,7 +37,7 @@ public class BudgetNewBuildActivity extends BaseActivity {
 
         etSurfaceM2 = findViewById(R.id.etBudgetBuildM2);
         rgMaterialsQuality = findViewById(R.id.rgBudgetBuildMaterials);
-        btnNewBuildSubmit=findViewById(R.id.btnBudgetBuildSubmit);
+        btnNewBuildSubmit = findViewById(R.id.btnBudgetBuildSubmit);
         btnNewBuildSubmit.setOnClickListener(v -> {
             if (!validateFormData()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -47,9 +47,9 @@ public class BudgetNewBuildActivity extends BaseActivity {
             } else {
                 Bundle bundle = getIntent().getExtras();
                 User user = new User(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"));
-                BudgetNewBuild budgetNewBuild=new BudgetNewBuild(user,surfaceM2,materialsQuality);
-                ApiService service=ApiServiceImpl.getApiServiceNewBuildBudget(BudgetNewBuildActivity.this);
-                Call<BudgetNewBuild> call=service.createNewBuildBudget(budgetNewBuild);
+                BudgetNewBuild budgetNewBuild = new BudgetNewBuild(user, surfaceM2, materialsQuality);
+                ApiService service = ApiServiceImpl.getApiServiceNewBuildBudget(BudgetNewBuildActivity.this);
+                Call<BudgetNewBuild> call = service.createNewBuildBudget(budgetNewBuild);
                 call.enqueue(new Callback<BudgetNewBuild>() {
                     @Override
                     public void onResponse(Call<BudgetNewBuild> call, Response<BudgetNewBuild> response) {
@@ -84,19 +84,15 @@ public class BudgetNewBuildActivity extends BaseActivity {
         surfaceM2 = Integer.parseInt(etSurfaceM2.getText().toString());
         rbSelectedQuality = findViewById(rgMaterialsQuality.getCheckedRadioButtonId());
         String selectedQuality = rbSelectedQuality.getText().toString();
-        switch (selectedQuality) {
-            case "Low":
-                materialsQuality = low;
-                break;
-            case "Medium":
-                materialsQuality = medium;
-                break;
-            case "High":
-                materialsQuality = high;
-                break;
-            default:
-                Toast.makeText(getApplicationContext(), getString(R.string.register_submit_fail), Toast.LENGTH_SHORT).show();
+        if (selectedQuality.equals("Low") || selectedQuality.equals("Baja") || selectedQuality.equals("Baixa")) {
+            materialsQuality = low;
+        } else if (selectedQuality.equals("Medium") || selectedQuality.equals("Media") || selectedQuality.equals("Mitjana")) {
+            materialsQuality = medium;
+        } else if (selectedQuality.equals("High") || selectedQuality.equals("Alta")) {
+            materialsQuality = high;
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.register_submit_fail), Toast.LENGTH_SHORT).show();
         }
-        return surfaceM2 != null && !materialsQuality.isNaN();
+        return surfaceM2 != null && materialsQuality != null;
     }
 }
