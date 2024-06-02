@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.BudgetReformBathroom;
+import com.example.frontend.models.Client;
 import com.example.frontend.models.User;
 
 import retrofit2.Call;
@@ -57,8 +58,7 @@ public class BudgetReformBathroomActivity extends BaseActivity {
                 builder.show();
             } else {
                 Bundle bundle = getIntent().getExtras();
-                User user = new User(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"));
-                BudgetReformBathroom bathroomBudget = new BudgetReformBathroom(user, height, width, length, tiles, piecesAdd, piecesRemove);
+                BudgetReformBathroom bathroomBudget = new BudgetReformBathroom(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"),bundle.getString("province"), height, width, length, tiles, piecesAdd, piecesRemove);
                 ApiService service = ApiServiceImpl.getApiServiceBathroomBudget(BudgetReformBathroomActivity.this);
                 Call<BudgetReformBathroom> call = service.createBathroomBudget(bathroomBudget);
                 call.enqueue(new Callback<BudgetReformBathroom>() {

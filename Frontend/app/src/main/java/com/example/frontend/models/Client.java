@@ -1,13 +1,13 @@
 package com.example.frontend.models;
 
-public abstract class Budget {
+public class Client {
     private String destinatario;
     private String direccion;
     private String codigoPostal;
     private String municipio;
     private String provincia;
 
-    public Budget(String destinatario, String direccion, String codigoPostal, String municipio, String provincia) {
+    public Client(String destinatario, String direccion, String codigoPostal, String municipio, String provincia) {
         this.destinatario = destinatario;
         this.direccion = direccion;
         this.codigoPostal = codigoPostal;

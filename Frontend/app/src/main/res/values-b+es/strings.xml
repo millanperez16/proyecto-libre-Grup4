@@ -66,4 +66,6 @@
     <string name="reform_kitchen_renovation_no">No</string>
     <string name="reform_kitchen_surface_furniture">Metros lineales de muebles (m):</string>
     <string name="reform_kitchen_surface_worktop">Metros lineales de encimera (m):</string>
+    <string name="login_submit_success">Logueado con éxito</string>
+    <string name="login_submit_fail">No se pudo hacer login</string>
 </resources>

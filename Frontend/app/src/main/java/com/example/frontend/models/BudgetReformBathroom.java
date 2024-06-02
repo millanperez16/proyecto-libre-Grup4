@@ -1,68 +1,68 @@
 package com.example.frontend.models;
 
 public class BudgetReformBathroom extends Budget{
-    private Float height;
-    private Float width;
-    private Float length;
-    private Float tiles;
-    private Integer piecesAdd;
-    private Integer piecesRemove;
+    private Float alto;
+    private Float ancho;
+    private Float largo;
+    private Float precioAzulejoM2;
+    private Integer modifInstalacion;
+    private Integer numSanitarios;
 
-    public BudgetReformBathroom(User user, Float height, Float width, Float length, Float tiles, Integer piecesAdd, Integer piecesRemove) {
-        super(user);
-        this.height = height;
-        this.width = width;
-        this.length = length;
-        this.tiles = tiles;
-        this.piecesAdd = piecesAdd;
-        this.piecesRemove = piecesRemove;
+    public BudgetReformBathroom(String destinatario, String direccion, String codigoPostal, String municipio, String provincia, Float alto, Float ancho, Float largo, Float precioAzulejoM2, Integer modifInstalacion, Integer numSanitarios) {
+        super(destinatario, direccion, codigoPostal, municipio, provincia);
+        this.alto = alto;
+        this.ancho = ancho;
+        this.largo = largo;
+        this.precioAzulejoM2 = precioAzulejoM2;
+        this.modifInstalacion = modifInstalacion;
+        this.numSanitarios = numSanitarios;
     }
 
-    public Float getHeight() {
-        return height;
+    public Float getAlto() {
+        return alto;
     }
 
-    public void setHeight(Float height) {
-        this.height = height;
+    public void setAlto(Float alto) {
+        this.alto = alto;
     }
 
-    public Float getWidth() {
-        return width;
+    public Float getAncho() {
+        return ancho;
     }
 
-    public void setWidth(Float width) {
-        this.width = width;
+    public void setAncho(Float ancho) {
+        this.ancho = ancho;
     }
 
-    public Float getLength() {
-        return length;
+    public Float getLargo() {
+        return largo;
     }
 
-    public void setLength(Float length) {
-        this.length = length;
+    public void setLargo(Float largo) {
+        this.largo = largo;
     }
 
-    public Float getTiles() {
-        return tiles;
+    public Float getPrecioAzulejoM2() {
+        return precioAzulejoM2;
     }
 
-    public void setTiles(Float tiles) {
-        this.tiles = tiles;
+    public void setPrecioAzulejoM2(Float precioAzulejoM2) {
+        this.precioAzulejoM2 = precioAzulejoM2;
     }
 
-    public Integer getPiecesAdd() {
-        return piecesAdd;
+    public Integer getModifInstalacion() {
+        return modifInstalacion;
     }
 
-    public void setPiecesAdd(Integer piecesAdd) {
-        this.piecesAdd = piecesAdd;
+    public void setModifInstalacion(Integer modifInstalacion) {
+        this.modifInstalacion = modifInstalacion;
     }
 
-    public Integer getPiecesRemove() {
-        return piecesRemove;
+    public Integer getNumSanitarios() {
+        return numSanitarios;
     }
 
-    public void setPiecesRemove(Integer piecesRemove) {
-        this.piecesRemove = piecesRemove;
+    public void setNumSanitarios(Integer numSanitarios) {
+        this.numSanitarios = numSanitarios;
     }
 }

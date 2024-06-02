@@ -30,6 +30,7 @@ public class BudgetClientDataActivity extends BaseActivity {
     EditText etStreet;
     EditText etPostalCode;
     AutoCompleteTextView actvMunicipality;
+    Spinner spProvince;
     Button btnBuild;
     Button btnBathroom;
     Button btnKitchen;
@@ -41,6 +42,7 @@ public class BudgetClientDataActivity extends BaseActivity {
         etStreet = findViewById(R.id.etStreet);
         etPostalCode = findViewById(R.id.etPostalCode);
         actvMunicipality = findViewById(R.id.actvMunicipality);
+        spProvince = findViewById(R.id.spProvince);
 
         btnBuild = findViewById(R.id.btnNewBuild);
         btnBuild.setOnClickListener(v -> {
@@ -82,7 +84,7 @@ public class BudgetClientDataActivity extends BaseActivity {
         });
 
         ArrayList<String> provinces = new ArrayList<>(Arrays.asList("Barcelona"));
-        Spinner spProvince = findViewById(R.id.spProvince);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spProvince.setAdapter(adapter);
@@ -137,6 +139,7 @@ public class BudgetClientDataActivity extends BaseActivity {
         intent.putExtra("street", etStreet.getText().toString());
         intent.putExtra("postalCode", etPostalCode.getText().toString());
         intent.putExtra("municipality", actvMunicipality.getText().toString());
+        intent.putExtra("province",spProvince.getSelectedItem().toString());
         return intent;
     }
 

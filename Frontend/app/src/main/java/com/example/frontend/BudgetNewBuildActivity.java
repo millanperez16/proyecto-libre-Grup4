@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.BudgetNewBuild;
+import com.example.frontend.models.Client;
 import com.example.frontend.models.User;
 
 import retrofit2.Call;
@@ -46,13 +48,13 @@ public class BudgetNewBuildActivity extends BaseActivity {
                 builder.show();
             } else {
                 Bundle bundle = getIntent().getExtras();
-                User user = new User(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"));
-                BudgetNewBuild budgetNewBuild = new BudgetNewBuild(user, surfaceM2, materialsQuality);
+                BudgetNewBuild budgetNewBuild = new BudgetNewBuild(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"),bundle.getString("province"), surfaceM2, materialsQuality);
                 ApiService service = ApiServiceImpl.getApiServiceNewBuildBudget(BudgetNewBuildActivity.this);
                 Call<BudgetNewBuild> call = service.createNewBuildBudget(budgetNewBuild);
                 call.enqueue(new Callback<BudgetNewBuild>() {
                     @Override
                     public void onResponse(Call<BudgetNewBuild> call, Response<BudgetNewBuild> response) {
+                        System.out.println(response.body());
                         Toast.makeText(getApplicationContext(), getString(R.string.register_submit_success), Toast.LENGTH_SHORT).show();
                     }
 

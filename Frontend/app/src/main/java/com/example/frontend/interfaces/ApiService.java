@@ -5,6 +5,7 @@ import com.example.frontend.models.BudgetNewBuild;
 import com.example.frontend.models.BudgetReformBathroom;
 import com.example.frontend.models.BudgetReformKitchen;
 import com.example.frontend.models.Municipi;
+import com.example.frontend.models.Token;
 import com.example.frontend.models.User;
 
 import retrofit2.Call;
@@ -21,7 +22,7 @@ public interface ApiService {
     Call<User> registerNewUser(@Body User user);
 
     @POST("authenticate")
-    Call<User> loginUser(@Body User user);
+    Call<Token> loginUser(@Body User user);
 
     @POST("saveRefAseo")
     Call<BudgetReformBathroom> createBathroomBudget(@Body BudgetReformBathroom budgetReformBathroom);

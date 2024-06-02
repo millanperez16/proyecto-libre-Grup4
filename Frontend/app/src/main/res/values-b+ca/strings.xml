@@ -66,4 +66,6 @@
     <string name="reform_kitchen_renovation_no">No</string>
     <string name="reform_kitchen_surface_furniture">Metres lineals de mobles (m):</string>
     <string name="reform_kitchen_surface_worktop">Metres lineals de taulell (m):</string>
+    <string name="login_submit_success">T\'has logat amb èxit</string>
+    <string name="login_submit_fail">No s\'hi pot conenctar</string>
 </resources>

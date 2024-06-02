@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,8 +13,10 @@ import android.widget.Toast;
 
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
+import com.example.frontend.models.Token;
 import com.example.frontend.models.User;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,15 +71,23 @@ public class MainActivity extends BaseActivity {
         if (validateCredentials()) {
             User user = new User(etLoginMail.getText().toString(), etLoginPwd.getText().toString());
             ApiService service = ApiServiceImpl.getApiServiceLoginUser(this);
-            Call<User> call = service.loginUser(user);
-            call.enqueue(new Callback<User>() {
+            Call<Token> call = service.loginUser(user);
+            call.enqueue(new Callback<Token>() {
                 @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.register_submit_success), Toast.LENGTH_SHORT).show();
+                public void onResponse(Call<Token> call, Response<Token> response) {
+                    if (response.body().getToken() != null){
+                        OkHttpClient.Builder client = ApiServiceImpl.cli.newBuilder();
+                        client.addInterceptor(new AuthInterceptor(response.body().getToken()));
+                        ApiServiceImpl.setClientWithToken(client);
+                        Toast.makeText(getApplicationContext(), getString(R.string.login_submit_success), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), getString(R.string.login_submit_fail), Toast.LENGTH_SHORT).show();
+                    }
+                    System.out.println(response.body().getToken());
                 }
 
                 @Override
-                public void onFailure(Call<User> call, Throwable throwable) {
+                public void onFailure(Call<Token> call, Throwable throwable) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setMessage(throwable.getMessage());
                     builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());

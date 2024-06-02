@@ -1,78 +1,78 @@
 package com.example.frontend.models;
 
 public class BudgetReformKitchen extends Budget{
-    private Float height;
-    private Float width;
-    private Float length;
-    private Float tiles;
-    private Integer selectedFactor;
-    private Integer surfaceFurniture;
-    private Integer surfaceWorktop;
+    private Float alto;
+    private Float ancho;
+    private Float largo;
+    private Float precioAzulejoM2;
+    private Integer modifInstalacion;
+    private Integer muebleMtrLineales;
+    private Integer encimeraMtrLineales;
 
-    public BudgetReformKitchen(User user, Float height, Float width, Float length, Float tiles, Integer selectedFactor, Integer surfaceFurniture, Integer surfaceWorktop) {
-        super(user);
-        this.height = height;
-        this.width = width;
-        this.length = length;
-        this.tiles = tiles;
-        this.selectedFactor = selectedFactor;
-        this.surfaceFurniture = surfaceFurniture;
-        this.surfaceWorktop = surfaceWorktop;
+    public BudgetReformKitchen(String destinatario, String direccion, String codigoPostal, String municipio, String provincia, Float alto, Float ancho, Float largo, Float precioAzulejoM2, Integer modifInstalacion, Integer muebleMtrLineales, Integer encimeraMtrLineales) {
+        super(destinatario, direccion, codigoPostal, municipio, provincia);
+        this.alto = alto;
+        this.ancho = ancho;
+        this.largo = largo;
+        this.precioAzulejoM2 = precioAzulejoM2;
+        this.modifInstalacion = modifInstalacion;
+        this.muebleMtrLineales = muebleMtrLineales;
+        this.encimeraMtrLineales = encimeraMtrLineales;
     }
 
-    public Float getHeight() {
-        return height;
+    public Float getAlto() {
+        return alto;
     }
 
-    public void setHeight(Float height) {
-        this.height = height;
+    public void setAlto(Float alto) {
+        this.alto = alto;
     }
 
-    public Float getWidth() {
-        return width;
+    public Float getAncho() {
+        return ancho;
     }
 
-    public void setWidth(Float width) {
-        this.width = width;
+    public void setAncho(Float ancho) {
+        this.ancho = ancho;
     }
 
-    public Float getLength() {
-        return length;
+    public Float getLargo() {
+        return largo;
     }
 
-    public void setLength(Float length) {
-        this.length = length;
+    public void setLargo(Float largo) {
+        this.largo = largo;
     }
 
-    public Float getTiles() {
-        return tiles;
+    public Float getPrecioAzulejoM2() {
+        return precioAzulejoM2;
     }
 
-    public void setTiles(Float tiles) {
-        this.tiles = tiles;
+    public void setPrecioAzulejoM2(Float precioAzulejoM2) {
+        this.precioAzulejoM2 = precioAzulejoM2;
     }
 
-    public Integer getSelectedFactor() {
-        return selectedFactor;
+    public Integer getModifInstalacion() {
+        return modifInstalacion;
     }
 
-    public void setSelectedFactor(Integer selectedFactor) {
-        this.selectedFactor = selectedFactor;
+    public void setModifInstalacion(Integer modifInstalacion) {
+        this.modifInstalacion = modifInstalacion;
     }
 
-    public Integer getSurfaceFurniture() {
-        return surfaceFurniture;
+    public Integer getMuebleMtrLineales() {
+        return muebleMtrLineales;
     }
 
-    public void setSurfaceFurniture(Integer surfaceFurniture) {
-        this.surfaceFurniture = surfaceFurniture;
+    public void setMuebleMtrLineales(Integer muebleMtrLineales) {
+        this.muebleMtrLineales = muebleMtrLineales;
     }
 
-    public Integer getSurfaceWorktop() {
-        return surfaceWorktop;
+    public Integer getEncimeraMtrLineales() {
+        return encimeraMtrLineales;
     }
 
-    public void setSurfaceWorktop(Integer surfaceWorktop) {
-        this.surfaceWorktop = surfaceWorktop;
+    public void setEncimeraMtrLineales(Integer encimeraMtrLineales) {
+        this.encimeraMtrLineales = encimeraMtrLineales;
     }
 }

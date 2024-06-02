@@ -66,5 +66,7 @@
     <string name="reform_kitchen_renovation_no">No</string>
     <string name="reform_kitchen_surface_furniture">Total Furniture Surface (m):</string>
     <string name="reform_kitchen_surface_worktop">Total Worktop Surface (m):</string>
+    <string name="login_submit_success">Login success</string>
+    <string name="login_submit_fail">Login failed</string>
 
 </resources>

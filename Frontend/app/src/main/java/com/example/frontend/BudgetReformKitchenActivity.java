@@ -15,6 +15,7 @@ import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.BudgetReformBathroom;
 import com.example.frontend.models.BudgetReformKitchen;
+import com.example.frontend.models.Client;
 import com.example.frontend.models.User;
 
 import retrofit2.Call;
@@ -62,8 +63,8 @@ public class BudgetReformKitchenActivity extends BaseActivity {
                 builder.show();
             } else {
                 Bundle bundle = getIntent().getExtras();
-                User user = new User(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"));
-                BudgetReformKitchen kitchenBudget = new BudgetReformKitchen(user, height, width, length, tiles, selectedFactor, surfaceFurniture, surfaceWorktop);
+                Client client = new Client(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"),bundle.getString("province"));
+                BudgetReformKitchen kitchenBudget = new BudgetReformKitchen(bundle.getString("nameSurname"), bundle.getString("street"), bundle.getString("postalCode"), bundle.getString("municipality"),bundle.getString("province"), height, width, length, tiles, selectedFactor, surfaceFurniture, surfaceWorktop);
                 ApiService service = ApiServiceImpl.getApiServiceKitchenBudget(BudgetReformKitchenActivity.this);
                 Call<BudgetReformKitchen> call = service.createKitchenBudget(kitchenBudget);
                 call.enqueue(new Callback<BudgetReformKitchen>() {

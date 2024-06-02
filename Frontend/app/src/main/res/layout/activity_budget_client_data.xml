@@ -68,7 +68,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="@string/generic_postal_code"
-                android:inputType="text" />
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/tvMunicipality"

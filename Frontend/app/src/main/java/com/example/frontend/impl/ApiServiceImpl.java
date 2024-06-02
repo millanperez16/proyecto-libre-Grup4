@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.frontend.AuthInterceptor;
 import com.example.frontend.R;
 import com.example.frontend.interfaces.ApiService;
 
@@ -34,11 +35,14 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 public class ApiServiceImpl {
     private static ApiService apiService;
     private static final String URL_MUNICIPIS = "https://do.diba.cat/api/dataset/municipis/";
-    private static final String URL_USERS = "https://localhost:8442/clientes/";
-    private static final String URL_BATHROOM = "https://localhost:8442/presupuestos/aseos/";
-    private static final String URL_KITCHEN = "https://localhost:8442/presupuestos/cocina/";
-    private static final String URL_NEW_BUILD = "https://localhost:8442/presupuestos/obranueva/";
+    private static final String URL_USERS = "https://10.0.2.2:8442/clientes/";
+    private static final String URL_BATHROOM = "https://10.0.2.2:8442/presupuestos/aseos/";
+    private static final String URL_KITCHEN = "https://10.0.2.2:8442/presupuestos/cocina/";
+    private static final String URL_NEW_BUILD = "https://10.0.2.2:8442/presupuestos/obranueva/";
+    private static Retrofit retrofit;
     private static Context contextApp;
+    public static OkHttpClient cli;
+    private static OkHttpClient.Builder clientWithToken=null;
 
     public static ApiService getApiServiceMunicipi(String like) {
         // Creamos un interceptor y le indicamos el log level a usar
@@ -49,14 +53,14 @@ public class ApiServiceImpl {
         final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        if (apiService == null) {
-            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
+        //if (apiService == null) {
+            Retrofit retrofitMunicipis = new retrofit2.Retrofit.Builder()
                     .baseUrl(URL_MUNICIPIS + "camp-municipi_transliterat-like/" + like + "/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
-            apiService = retrofitSingleton.create(ApiService.class);
-        }
+            apiService = retrofitMunicipis.create(ApiService.class);
+        //}
         return apiService;
     }
 
@@ -75,14 +79,14 @@ public class ApiServiceImpl {
             httpClient.addInterceptor(logging);
         }
 
-        if (apiService == null) {
-            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
+        //if (apiService == null) {
+            retrofit = new retrofit2.Retrofit.Builder()
                     .baseUrl(URL_USERS)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
-            apiService = retrofitSingleton.create(ApiService.class);
-        }
+            apiService = retrofit.create(ApiService.class);
+        //}
         return apiService;
     }
 
@@ -94,21 +98,21 @@ public class ApiServiceImpl {
         contextApp = context;
 
         // Asociamos el interceptor a las peticiones
-        final OkHttpClient cli = getClient();
+        cli = getClient();
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         if (cli != null){
             httpClient = cli.newBuilder();
             httpClient.addInterceptor(logging);
         }
 
-        if (apiService == null) {
-            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
+        //if (apiService == null) {
+            retrofit = new retrofit2.Retrofit.Builder()
                     .baseUrl(URL_USERS)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
-            apiService = retrofitSingleton.create(ApiService.class);
-        }
+            apiService = retrofit.create(ApiService.class);
+        //}
         return apiService;
     }
 
@@ -120,21 +124,15 @@ public class ApiServiceImpl {
         contextApp = context;
 
         // Asociamos el interceptor a las peticiones
-        final OkHttpClient cli = getClient();
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        if (cli != null){
-            httpClient = cli.newBuilder();
-            httpClient.addInterceptor(logging);
-        }
-
-        if (apiService == null) {
-            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
+        OkHttpClient.Builder httpClient = getClientWithToken();
+        //if (apiService == null) {
+            retrofit = new retrofit2.Retrofit.Builder()
                     .baseUrl(URL_NEW_BUILD)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build();
-            apiService = retrofitSingleton.create(ApiService.class);
-        }
+            apiService = retrofit.create(ApiService.class);
+        //}
         return apiService;
     }
 
@@ -146,21 +144,14 @@ public class ApiServiceImpl {
         contextApp = context;
 
         // Asociamos el interceptor a las peticiones
-        final OkHttpClient cli = getClient();
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        if (cli != null){
-            httpClient = cli.newBuilder();
-            httpClient.addInterceptor(logging);
-        }
-
-        if (apiService == null) {
-            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
-                    .baseUrl(URL_BATHROOM)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(httpClient.build())
-                    .build();
-            apiService = retrofitSingleton.create(ApiService.class);
-        }
+        OkHttpClient.Builder httpClient = getClientWithToken();
+        //if (apiService == null) {
+        retrofit = new retrofit2.Retrofit.Builder()
+                .baseUrl(URL_BATHROOM)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+        apiService = retrofit.create(ApiService.class);
         return apiService;
     }
 
@@ -172,22 +163,25 @@ public class ApiServiceImpl {
         contextApp = context;
 
         // Asociamos el interceptor a las peticiones
-        final OkHttpClient cli = getClient();
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        if (cli != null){
-            httpClient = cli.newBuilder();
-            httpClient.addInterceptor(logging);
-        }
-
-        if (apiService == null) {
-            Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
-                    .baseUrl(URL_KITCHEN)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(httpClient.build())
-                    .build();
-            apiService = retrofitSingleton.create(ApiService.class);
-        }
+        OkHttpClient.Builder httpClient = getClientWithToken();
+        //if (apiService == null) {
+        retrofit = new retrofit2.Retrofit.Builder()
+                .baseUrl(URL_KITCHEN)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+        apiService = retrofit.create(ApiService.class);
         return apiService;
+    }
+
+    public static void setClientWithToken(OkHttpClient.Builder loggedClient){
+        if(clientWithToken==null){
+            clientWithToken=loggedClient;
+        }
+    }
+
+    public static OkHttpClient.Builder getClientWithToken(){
+        return clientWithToken;
     }
 
     @Nullable

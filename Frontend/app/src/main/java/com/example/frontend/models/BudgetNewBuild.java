@@ -1,28 +1,28 @@
 package com.example.frontend.models;
 
 public class BudgetNewBuild extends Budget{
-    private Integer surfaceM2;
-    private Float materialsQuality;
+    private Integer superficie;
+    private Float calidad;
 
-    public BudgetNewBuild(User user, Integer surfaceM2, Float materialsQuality) {
-        super(user);
-        this.surfaceM2 = surfaceM2;
-        this.materialsQuality = materialsQuality;
+    public BudgetNewBuild(String nameSurnames, String street, String postalCode, String municipality, String province, Integer superficie, Float calidad) {
+        super(nameSurnames, street, postalCode, municipality, province);
+        this.superficie = superficie;
+        this.calidad = calidad;
     }
 
-    public Integer getSurfaceM2() {
-        return surfaceM2;
+    public Integer getSuperficie() {
+        return superficie;
     }
 
-    public void setSurfaceM2(Integer surfaceM2) {
-        this.surfaceM2 = surfaceM2;
+    public void setSuperficie(Integer superficie) {
+        this.superficie = superficie;
     }
 
-    public Float getMaterialsQuality() {
-        return materialsQuality;
+    public Float getCalidad() {
+        return calidad;
     }
 
-    public void setMaterialsQuality(Float materialsQuality) {
-        this.materialsQuality = materialsQuality;
+    public void setCalidad(Float calidad) {
+        this.calidad = calidad;
     }
 }
