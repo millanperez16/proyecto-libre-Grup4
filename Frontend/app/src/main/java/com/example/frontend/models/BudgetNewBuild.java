@@ -25,4 +25,14 @@ public class BudgetNewBuild extends Budget{
     public void setCalidad(Float calidad) {
         this.calidad = calidad;
     }
+
+    @Override
+    public String toString() {
+        String budgetData = super.toString();
+        return "BudgetNewBuild{" +
+                budgetData +
+                "superficie=" + superficie +
+                ", calidad=" + calidad +
+                '}';
+    }
 }

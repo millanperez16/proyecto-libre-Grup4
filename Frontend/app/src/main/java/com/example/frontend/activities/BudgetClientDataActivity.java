@@ -1,4 +1,4 @@
-package com.example.frontend;
+package com.example.frontend.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.frontend.R;
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.Element;

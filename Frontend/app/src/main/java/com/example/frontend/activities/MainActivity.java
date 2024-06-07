@@ -1,16 +1,19 @@
-package com.example.frontend;
+package com.example.frontend.activities;
 
 import androidx.appcompat.app.AlertDialog;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.frontend.AuthInterceptor;
+import com.example.frontend.R;
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.Token;
@@ -79,11 +82,14 @@ public class MainActivity extends BaseActivity {
                         OkHttpClient.Builder client = ApiServiceImpl.cli.newBuilder();
                         client.addInterceptor(new AuthInterceptor(response.body().getToken()));
                         ApiServiceImpl.setClientWithToken(client);
+                        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor=prefs.edit();
+                        editor.putString("email",etLoginMail.getText().toString());
+                        editor.apply();
                         Toast.makeText(getApplicationContext(), getString(R.string.login_submit_success), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), getString(R.string.login_submit_fail), Toast.LENGTH_SHORT).show();
                     }
-                    System.out.println(response.body().getToken());
                 }
 
                 @Override

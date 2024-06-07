@@ -1,6 +1,6 @@
 package com.example.frontend.models;
 
-public class BudgetReformKitchen extends Budget{
+public class BudgetReformKitchen extends Budget {
     private Float alto;
     private Float ancho;
     private Float largo;
@@ -74,5 +74,20 @@ public class BudgetReformKitchen extends Budget{
 
     public void setEncimeraMtrLineales(Integer encimeraMtrLineales) {
         this.encimeraMtrLineales = encimeraMtrLineales;
+    }
+
+    @Override
+    public String toString() {
+        String budgetData = super.toString();
+        return "BudgetReformKitchen{" +
+                budgetData +
+                "alto=" + alto +
+                ", ancho=" + ancho +
+                ", largo=" + largo +
+                ", precioAzulejoM2=" + precioAzulejoM2 +
+                ", modifInstalacion=" + modifInstalacion +
+                ", muebleMtrLineales=" + muebleMtrLineales +
+                ", encimeraMtrLineales=" + encimeraMtrLineales +
+                '}';
     }
 }

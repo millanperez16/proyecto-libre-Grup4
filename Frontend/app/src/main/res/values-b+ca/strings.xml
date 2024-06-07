@@ -51,7 +51,7 @@
     <string name="reform_bathroom_tile_price">Preu de rajoles (€/m²):</string>
     <string name="reform_bathroom_pieces_add">Peces de bany a afegir:</string>
     <string name="reform_bathroom_pieces_remove">Peces de bany a treure:</string>
-    <string name="reform_bathroom_pieces_num_none">Cap</string>
+    <string name="reform_bathroom_pieces_num_none">0</string>
     <string name="reform_bathroom_pieces_num_one">1</string>
     <string name="reform_bathroom_pieces_num_two">2</string>
     <string name="reform_bathroom_pieces_num_three">3</string>
@@ -66,6 +66,9 @@
     <string name="reform_kitchen_renovation_no">No</string>
     <string name="reform_kitchen_surface_furniture">Metres lineals de mobles (m):</string>
     <string name="reform_kitchen_surface_worktop">Metres lineals de taulell (m):</string>
-    <string name="login_submit_success">T\'has logat amb èxit</string>
-    <string name="login_submit_fail">No s\'hi pot conenctar</string>
+    <string name="login_submit_success">Sessió iniciada amb èxit</string>
+    <string name="login_submit_fail">No s\'ha pogut iniciar sessió</string>
+    <string name="my_budgets_title"><u>Els meus pressupostos</u></string>
+    <string name="budget_submit_success">Pressupost guardat amb èxit</string>
+    <string name="budget_submit_fail">Error en guardar pressupost</string>
 </resources>

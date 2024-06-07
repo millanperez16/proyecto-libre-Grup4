@@ -1,4 +1,4 @@
-package com.example.frontend;
+package com.example.frontend.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,11 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.frontend.R;
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.BudgetReformBathroom;
-import com.example.frontend.models.Client;
-import com.example.frontend.models.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;

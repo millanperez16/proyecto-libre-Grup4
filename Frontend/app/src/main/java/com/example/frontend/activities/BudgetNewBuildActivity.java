@@ -1,22 +1,19 @@
-package com.example.frontend;
+package com.example.frontend.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.frontend.R;
 import com.example.frontend.impl.ApiServiceImpl;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.BudgetNewBuild;
-import com.example.frontend.models.Client;
-import com.example.frontend.models.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -86,11 +83,11 @@ public class BudgetNewBuildActivity extends BaseActivity {
         surfaceM2 = Integer.parseInt(etSurfaceM2.getText().toString());
         rbSelectedQuality = findViewById(rgMaterialsQuality.getCheckedRadioButtonId());
         String selectedQuality = rbSelectedQuality.getText().toString();
-        if (selectedQuality.equals("Low") || selectedQuality.equals("Baja") || selectedQuality.equals("Baixa")) {
+        if (selectedQuality.equals(getString(R.string.build_material_low))) {
             materialsQuality = low;
-        } else if (selectedQuality.equals("Medium") || selectedQuality.equals("Media") || selectedQuality.equals("Mitjana")) {
+        } else if (selectedQuality.equals(getString(R.string.build_material_mid))) {
             materialsQuality = medium;
-        } else if (selectedQuality.equals("High") || selectedQuality.equals("Alta")) {
+        } else if (selectedQuality.equals(getString(R.string.build_material_high))) {
             materialsQuality = high;
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.register_submit_fail), Toast.LENGTH_SHORT).show();

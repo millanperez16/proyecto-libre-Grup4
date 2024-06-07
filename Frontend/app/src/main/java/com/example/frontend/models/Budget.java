@@ -6,6 +6,7 @@ public abstract class Budget {
     private String codigoPostal;
     private String municipio;
     private String provincia;
+    private String referencia;
 
     public Budget(String destinatario, String direccion, String codigoPostal, String municipio, String provincia) {
         this.destinatario = destinatario;
@@ -54,4 +55,20 @@ public abstract class Budget {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
+
+    public String getReferencia() {
+        return referencia;
+    }
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    @Override
+    public String toString() {
+        return  "destinatario='" + destinatario + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                ", municipio='" + municipio + '\'' +
+                ", provincia='" + provincia + '\'' +
+                ", referencia='" + referencia + '\''; }
 }

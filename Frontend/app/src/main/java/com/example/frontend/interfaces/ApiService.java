@@ -1,12 +1,14 @@
 package com.example.frontend.interfaces;
 
-import com.example.frontend.BudgetReformKitchenActivity;
+import com.example.frontend.models.Budget;
 import com.example.frontend.models.BudgetNewBuild;
 import com.example.frontend.models.BudgetReformBathroom;
 import com.example.frontend.models.BudgetReformKitchen;
 import com.example.frontend.models.Municipi;
 import com.example.frontend.models.Token;
 import com.example.frontend.models.User;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,6 +31,10 @@ public interface ApiService {
 
     @POST("saveObra")
     Call<BudgetNewBuild> createNewBuildBudget(@Body BudgetNewBuild budgetNewBuild);
+
     @POST("saveRefCocina")
     Call<BudgetReformKitchen> createKitchenBudget(@Body BudgetReformKitchen budgetReformKitchen);
+
+    @GET
+    Call<List<Budget>> getBudgetsByEmail();
 }

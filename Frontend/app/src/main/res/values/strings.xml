@@ -23,7 +23,7 @@
     <string name="register_pwd_confirm">Confirm Password:</string>
     <string name="register_register">Register</string>
     <string name="register_submit_success">Register successful</string>
-    <string name="register_submit_fail">Something went wrong</string>
+    <string name="register_submit_fail">An error has ocurred</string>
     <string name="generic_title"><u>Client Data</u></string>
     <string name="generic_full_name">Name and Surnames:</string>
     <string name="generic_street">Street:</string>
@@ -51,7 +51,7 @@
     <string name="reform_bathroom_tile_price">Tile Price (€/m²):</string>
     <string name="reform_bathroom_pieces_add">Number of Bathroom Pieces to Add:</string>
     <string name="reform_bathroom_pieces_remove">Number of Bathroom Pieces to Remove:</string>
-    <string name="reform_bathroom_pieces_num_none">None</string>
+    <string name="reform_bathroom_pieces_num_none">0</string>
     <string name="reform_bathroom_pieces_num_one">1</string>
     <string name="reform_bathroom_pieces_num_two">2</string>
     <string name="reform_bathroom_pieces_num_three">3</string>
@@ -66,7 +66,9 @@
     <string name="reform_kitchen_renovation_no">No</string>
     <string name="reform_kitchen_surface_furniture">Total Furniture Surface (m):</string>
     <string name="reform_kitchen_surface_worktop">Total Worktop Surface (m):</string>
-    <string name="login_submit_success">Login success</string>
+    <string name="login_submit_success">Login successful</string>
     <string name="login_submit_fail">Login failed</string>
-
+    <string name="my_budgets_title"><u>My Budgets</u></string>
+    <string name="budget_submit_success">Budget saved successfully</string>
+    <string name="budget_submit_fail">Error while saving Budget</string>
 </resources>

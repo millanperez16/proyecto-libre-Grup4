@@ -1,6 +1,6 @@
 package com.example.frontend.models;
 
-public class BudgetReformBathroom extends Budget{
+public class BudgetReformBathroom extends Budget {
     private Float alto;
     private Float ancho;
     private Float largo;
@@ -64,5 +64,19 @@ public class BudgetReformBathroom extends Budget{
 
     public void setNumSanitarios(Integer numSanitarios) {
         this.numSanitarios = numSanitarios;
+    }
+
+    @Override
+    public String toString() {
+        String budgetData = super.toString();
+        return "BudgetReformBathroom{" +
+                budgetData +
+                "alto=" + alto +
+                ", ancho=" + ancho +
+                ", largo=" + largo +
+                ", precioAzulejoM2=" + precioAzulejoM2 +
+                ", modifInstalacion=" + modifInstalacion +
+                ", numSanitarios=" + numSanitarios +
+                '}';
     }
 }

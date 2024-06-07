@@ -1,4 +1,4 @@
-package com.example.frontend;
+package com.example.frontend.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.os.LocaleListCompat;
 import androidx.fragment.app.FragmentManager;
+
+import com.example.frontend.R;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
@@ -58,8 +60,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.action_catalan) {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("ca"));
             return true;
-        }else if (item.getItemId() == R.id.action_new_budget){
+        } else if (item.getItemId() == R.id.action_new_budget) {
             startActivity(new Intent(this, BudgetClientDataActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.action_my_budgets) {
+            startActivity(new Intent(this, MyBudgetsActivity.class));
             return true;
         } else {
             return super.onOptionsItemSelected(item);
