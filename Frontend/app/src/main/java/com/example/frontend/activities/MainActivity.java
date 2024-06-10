@@ -78,14 +78,15 @@ public class MainActivity extends BaseActivity {
             call.enqueue(new Callback<Token>() {
                 @Override
                 public void onResponse(Call<Token> call, Response<Token> response) {
-                    if (response.body().getToken() != null){
+                    if (response.body() != null) {
                         OkHttpClient.Builder client = ApiServiceImpl.cli.newBuilder();
                         client.addInterceptor(new AuthInterceptor(response.body().getToken()));
                         ApiServiceImpl.setClientWithToken(client);
-                        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor=prefs.edit();
-                        editor.putString("email",etLoginMail.getText().toString());
+                        SharedPreferences prefs = getSharedPreferences("emails", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("email", etLoginMail.getText().toString());
                         editor.apply();
+                        startActivity(new Intent(MainActivity.this, MyBudgetsActivity.class));
                         Toast.makeText(getApplicationContext(), getString(R.string.login_submit_success), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), getString(R.string.login_submit_fail), Toast.LENGTH_SHORT).show();

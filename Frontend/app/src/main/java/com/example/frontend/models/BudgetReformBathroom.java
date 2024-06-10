@@ -69,14 +69,12 @@ public class BudgetReformBathroom extends Budget {
     @Override
     public String toString() {
         String budgetData = super.toString();
-        return "BudgetReformBathroom{" +
-                budgetData +
-                "alto=" + alto +
-                ", ancho=" + ancho +
-                ", largo=" + largo +
-                ", precioAzulejoM2=" + precioAzulejoM2 +
-                ", modifInstalacion=" + modifInstalacion +
-                ", numSanitarios=" + numSanitarios +
-                '}';
+        return budgetData +
+                alto + System.lineSeparator() +
+                ancho + System.lineSeparator() +
+                largo + System.lineSeparator() +
+                precioAzulejoM2 + System.lineSeparator() +
+                modifInstalacion + System.lineSeparator() +
+                numSanitarios;
     }
 }

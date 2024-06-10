@@ -9,6 +9,10 @@ import androidx.annotation.Nullable;
 import com.example.frontend.AuthInterceptor;
 import com.example.frontend.R;
 import com.example.frontend.interfaces.ApiService;
+import com.example.frontend.models.Budget;
+import com.example.frontend.models.BudgetDeserializer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.InputStream;
 import java.security.KeyStore;
@@ -40,7 +44,7 @@ public class ApiServiceImpl {
     private static final String URL_BATHROOM = "https://10.0.2.2:8442/presupuestos/aseos/";
     private static final String URL_KITCHEN = "https://10.0.2.2:8442/presupuestos/cocina/";
     private static final String URL_NEW_BUILD = "https://10.0.2.2:8442/presupuestos/obranueva/";
-    private static final String URL_CLIENT_BUDGETS = "https://10.0.2.2:8442/presupuestos/findByCliente/";
+    private static final String URL_CLIENT_BUDGETS = "https://10.0.2.2:8442/presupuestos/";
     private static Retrofit retrofit;
     private static Context contextApp;
     public static OkHttpClient cli;
@@ -80,15 +84,12 @@ public class ApiServiceImpl {
             httpClient = cli.newBuilder();
             httpClient.addInterceptor(logging);
         }
-
-        //if (apiService == null) {
         retrofit = new retrofit2.Retrofit.Builder()
                 .baseUrl(URL_USERS)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
         apiService = retrofit.create(ApiService.class);
-        //}
         return apiService;
     }
 
@@ -167,19 +168,24 @@ public class ApiServiceImpl {
         return apiService;
     }
 
-    public static ApiService getApiServiceGetClientBudgets(Context context, String correo) {
+    public static ApiService getApiServiceGetClientBudgets(Context context) {
         // Creamos un interceptor y le indicamos el log level a usar
         final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         contextApp = context;
 
-        // Asociamos el interceptor a las peticiones
+        //Retrofit no sabe deserializar interfaces ni clases abstractas
+        //Creamos un objeto que le enseñe cómo diferenciar presupuestos
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Budget.class, new BudgetDeserializer())
+                .create();
+
+        // Asociamos el interceptor a las peticiones y añadimos el deserializador al ConverterFactory
         OkHttpClient.Builder httpClient = getClientWithToken();
-        //if (apiService == null) {
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_CLIENT_BUDGETS + correo + "/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(URL_CLIENT_BUDGETS)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(httpClient.build())
                 .build();
         apiService = retrofit.create(ApiService.class);

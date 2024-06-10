@@ -3,6 +3,7 @@ package com.example.frontend.models;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,12 +12,18 @@ import com.example.frontend.R;
 
 import java.util.List;
 
-public class MyBudgetsAdapter extends RecyclerView.Adapter<MyBudgetsAdapter.CustomViewHolder>{
+public class MyBudgetsAdapter extends RecyclerView.Adapter<MyBudgetsAdapter.CustomViewHolder> {
+
+    public interface OnItemClickListener {
+        void onItemClick(Budget budget);
+    }
 
     private List<Budget> budgets;
+    private OnItemClickListener onItemClickListener;
 
-    public MyBudgetsAdapter(List<Budget> budgets) {
+    public MyBudgetsAdapter(List<Budget> budgets, OnItemClickListener onItemClickListener) {
         this.budgets = budgets;
+        this.onItemClickListener = onItemClickListener;
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -27,6 +34,11 @@ public class MyBudgetsAdapter extends RecyclerView.Adapter<MyBudgetsAdapter.Cust
             super(itemView);
             myView = itemView;
             tvBudget = myView.findViewById(R.id.budget);
+        }
+
+        public void bind(final Budget budget, final OnItemClickListener listener) {
+            tvBudget.setText(budget.getReferencia());
+            itemView.setOnClickListener(v -> listener.onItemClick(budget));
         }
     }
 
@@ -39,12 +51,12 @@ public class MyBudgetsAdapter extends RecyclerView.Adapter<MyBudgetsAdapter.Cust
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
-        holder.tvBudget.setText(budgets.get(position).getReferencia());
+        holder.bind(budgets.get(position),onItemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return budgets.size();
+        return budgets != null ? budgets.size() : 0;
     }
 }
 

@@ -65,10 +65,10 @@ public abstract class Budget {
 
     @Override
     public String toString() {
-        return  "destinatario='" + destinatario + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", codigoPostal='" + codigoPostal + '\'' +
-                ", municipio='" + municipio + '\'' +
-                ", provincia='" + provincia + '\'' +
-                ", referencia='" + referencia + '\''; }
+        return  destinatario + System.lineSeparator() +
+                direccion + System.lineSeparator() +
+                codigoPostal + System.lineSeparator() +
+                municipio + System.lineSeparator() +
+                provincia + System.lineSeparator() +
+                referencia + System.lineSeparator(); }
 }

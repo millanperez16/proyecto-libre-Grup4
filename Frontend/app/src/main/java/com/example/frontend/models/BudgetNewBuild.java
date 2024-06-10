@@ -1,6 +1,6 @@
 package com.example.frontend.models;
 
-public class BudgetNewBuild extends Budget{
+public class BudgetNewBuild extends Budget {
     private Integer superficie;
     private Float calidad;
 
@@ -29,10 +29,8 @@ public class BudgetNewBuild extends Budget{
     @Override
     public String toString() {
         String budgetData = super.toString();
-        return "BudgetNewBuild{" +
-                budgetData +
-                "superficie=" + superficie +
-                ", calidad=" + calidad +
-                '}';
+        return budgetData +
+                superficie + System.lineSeparator() +
+                calidad;
     }
 }

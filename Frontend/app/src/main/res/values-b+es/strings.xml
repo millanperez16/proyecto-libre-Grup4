@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Frontend</string>
+    <string name="app_name">Euroconstrucciones</string>
     <string name="app_title">Euroconstrucciones</string>
     <string name="app_options">Opciones</string>
     <string name="toolbar_about_us">Sobre nosotros</string>
@@ -25,11 +25,11 @@
     <string name="register_submit_success">Registro completado con éxito</string>
     <string name="register_submit_fail">Se ha producido un error</string>
     <string name="generic_title"><u>Datos del cliente</u></string>
-    <string name="generic_full_name">Nombre y apellidos:</string>
-    <string name="generic_street">Calle:</string>
-    <string name="generic_postal_code">Código postal:</string>
-    <string name="generic_municipality">Municipio:</string>
-    <string name="generic_province">Provincia:</string>
+    <string name="generic_full_name">"Nombre y apellidos: "</string>
+    <string name="generic_street">"Calle: "</string>
+    <string name="generic_postal_code">"Código postal: "</string>
+    <string name="generic_municipality">"Municipio: "</string>
+    <string name="generic_province">"Provincia: "</string>
     <string name="generic_btn_new_build">Obra nueva</string>
     <string name="generic_btn_reform_kitchen">Reforma cocina</string>
     <string name="generic_btn_reform_bathroom">Reforma Baño</string>
@@ -45,10 +45,10 @@
     <string name="build_material_mid">Media</string>
     <string name="build_material_high">Alta</string>
     <string name="reform_bathroom_title"><u>Reforma Baño</u></string>
-    <string name="reform_bathroom_length">Largo (m²):</string>
-    <string name="reform_bathroom_height">Alto (m²):</string>
-    <string name="reform_bathroom_width">Ancho (m²):</string>
-    <string name="reform_bathroom_tile_price">Precio azulejos (€/m²):</string>
+    <string name="reform_bathroom_length">"Largo (m²): "</string>
+    <string name="reform_bathroom_height">"Alto (m²): "</string>
+    <string name="reform_bathroom_width">"Ancho (m²): "</string>
+    <string name="reform_bathroom_tile_price">"Precio azulejos (€/m²): "</string>
     <string name="reform_bathroom_pieces_add">Piezas de baño a añadir:</string>
     <string name="reform_bathroom_pieces_remove">Piezas de baño a quitar:</string>
     <string name="reform_bathroom_pieces_num_none">0</string>
@@ -57,18 +57,21 @@
     <string name="reform_bathroom_pieces_num_three">3</string>
     <string name="reform_bathroom_pieces_num_four">4</string>
     <string name="reform_kitchen_title"><u>Reforma Cocina</u></string>
-    <string name="reform_kitchen_length">Largo (m²):</string>
-    <string name="reform_kitchen_height">Alto (m²):</string>
-    <string name="reform_kitchen_width">Ancho (m²):</string>
-    <string name="reform_kitchen_tile_price">Precio azulejos (€/m²):</string>
-    <string name="reform_kitchen_renovation">¿Hay que modificar instalaciones?</string>
+    <string name="reform_kitchen_length">"Largo (m²): "</string>
+    <string name="reform_kitchen_height">"Alto (m²): "</string>
+    <string name="reform_kitchen_width">"Ancho (m²): "</string>
+    <string name="reform_kitchen_tile_price">"Precio azulejos (€/m²): "</string>
+    <string name="reform_kitchen_renovation">"¿Hay que modificar instalaciones? "</string>
     <string name="reform_kitchen_renovation_yes">Sí</string>
     <string name="reform_kitchen_renovation_no">No</string>
-    <string name="reform_kitchen_surface_furniture">Metros lineales de muebles (m):</string>
-    <string name="reform_kitchen_surface_worktop">Metros lineales de encimera (m):</string>
+    <string name="reform_kitchen_surface_furniture">"Metros lineales de muebles: "</string>
+    <string name="reform_kitchen_surface_worktop">"Metros lineales de encimera: "</string>
     <string name="login_submit_success">Sesión iniciada con éxito</string>
     <string name="login_submit_fail">No se pudo iniciar sesión</string>
     <string name="my_budgets_title"><u>Mis presupuestos</u></string>
     <string name="budget_submit_success">Presupuesto guardado con éxito</string>
     <string name="budget_submit_fail">Error en guardar presupuesto</string>
+    <string name="my_budgets_fail">No se han recuperado los presupuestos</string>
+    <string name="generic_data_title">Datos:</string>
+    <string name="generic_reference">"Referencia: "</string>
 </resources>

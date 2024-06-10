@@ -85,6 +85,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="@string/register_pwd_confirm"
+                android:inputType="text|textPassword"
                 android:textIsSelectable="false" />
 
             <Button

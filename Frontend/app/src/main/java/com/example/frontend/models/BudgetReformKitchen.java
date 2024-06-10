@@ -79,15 +79,13 @@ public class BudgetReformKitchen extends Budget {
     @Override
     public String toString() {
         String budgetData = super.toString();
-        return "BudgetReformKitchen{" +
-                budgetData +
-                "alto=" + alto +
-                ", ancho=" + ancho +
-                ", largo=" + largo +
-                ", precioAzulejoM2=" + precioAzulejoM2 +
-                ", modifInstalacion=" + modifInstalacion +
-                ", muebleMtrLineales=" + muebleMtrLineales +
-                ", encimeraMtrLineales=" + encimeraMtrLineales +
-                '}';
+        return budgetData +
+                alto + System.lineSeparator() +
+                ancho + System.lineSeparator() +
+                largo + System.lineSeparator() +
+                precioAzulejoM2 + System.lineSeparator() +
+                modifInstalacion + System.lineSeparator() +
+                muebleMtrLineales + System.lineSeparator() +
+                encimeraMtrLineales;
     }
 }

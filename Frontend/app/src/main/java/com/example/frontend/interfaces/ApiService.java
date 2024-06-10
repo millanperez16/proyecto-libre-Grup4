@@ -35,6 +35,6 @@ public interface ApiService {
     @POST("saveRefCocina")
     Call<BudgetReformKitchen> createKitchenBudget(@Body BudgetReformKitchen budgetReformKitchen);
 
-    @GET
+    @GET("findAll?pagina=1")
     Call<List<Budget>> getBudgetsByEmail();
 }
