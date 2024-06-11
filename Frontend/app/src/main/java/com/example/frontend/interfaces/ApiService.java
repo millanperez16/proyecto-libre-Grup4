@@ -10,6 +10,7 @@ import com.example.frontend.models.User;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -43,7 +44,6 @@ public interface ApiService {
     @GET("images")
     Call<List<String>> getImageNames();
 
-    @Headers("Content-Type: image/jpeg")
     @GET("images/{name}")
-    Call<String> getImageFile(@Path("name") String imgName);
+    Call<ResponseBody> getImageFile(@Path("name") String imgName);
 }

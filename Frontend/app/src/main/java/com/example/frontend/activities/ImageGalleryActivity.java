@@ -14,8 +14,10 @@ import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.ImageGalleryAdapter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,20 +40,14 @@ public class ImageGalleryActivity extends BaseActivity {
         call.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                for (String img : response.body()) {
-                    imageThreads.add(new Thread(new UrlThread(img, service)));
-                }
-                for (Thread t : imageThreads) {
-                    t.start();
-                }
-                for (Thread t : imageThreads) {
-                    try {
-                        t.join();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                List<String> validImgs = response.body();
+                for (Iterator<String> iterator = validImgs.iterator(); iterator.hasNext(); ) {
+                    String str = iterator.next();
+                    if (str.toLowerCase().contains("ico") || str.toLowerCase().contains("logo") || str.toLowerCase().contains("obra")) {
+                        iterator.remove();
                     }
                 }
-                imageGalleryAdapter = new ImageGalleryAdapter(imageFiles, ImageGalleryActivity.this);
+                imageGalleryAdapter = new ImageGalleryAdapter(validImgs, ImageGalleryActivity.this);
                 RecyclerView.LayoutManager layoutManager = new GridLayoutManager(ImageGalleryActivity.this, 2); // 2 columns
                 rvImages.setLayoutManager(layoutManager);
                 rvImages.setAdapter(imageGalleryAdapter);
@@ -65,41 +61,6 @@ public class ImageGalleryActivity extends BaseActivity {
                 builder.show();
             }
         });
-    }
-
-    private void addImageFile(String fileName, ApiService service) {
-        Call<String> call = service.getImageFile(fileName);
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.d("ADD IMAGE FILE", response.body());
-                imageFiles.add(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                Log.d("REQUEST", String.valueOf(call.request()));
-                AlertDialog.Builder builder = new AlertDialog.Builder(ImageGalleryActivity.this);
-                builder.setMessage(throwable.getMessage());
-                builder.setPositiveButton(getString(R.string.alert_button_ok), (dialog, which) -> dialog.cancel());
-                builder.show();
-            }
-        });
-    }
-
-    class UrlThread implements Runnable {
-        String fileName;
-        ApiService service;
-
-        UrlThread(String fileName, ApiService service) {
-            this.fileName = fileName;
-            this.service = service;
-        }
-
-        @Override
-        public void run() {
-            addImageFile(fileName, service);
-        }
     }
 
     @Override
