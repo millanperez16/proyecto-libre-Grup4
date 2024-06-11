@@ -8,6 +8,8 @@ public abstract class Budget {
     private String provincia;
     private String referencia;
 
+    private Double total;
+
     public Budget(String destinatario, String direccion, String codigoPostal, String municipio, String provincia) {
         this.destinatario = destinatario;
         this.direccion = direccion;
@@ -63,6 +65,14 @@ public abstract class Budget {
         this.referencia = referencia;
     }
 
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return  destinatario + System.lineSeparator() +
@@ -70,5 +80,6 @@ public abstract class Budget {
                 codigoPostal + System.lineSeparator() +
                 municipio + System.lineSeparator() +
                 provincia + System.lineSeparator() +
-                referencia + System.lineSeparator(); }
+                referencia + System.lineSeparator() +
+                total + System.lineSeparator(); }
 }

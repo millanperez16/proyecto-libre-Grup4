@@ -24,8 +24,10 @@ import com.example.frontend.models.BudgetReformKitchen;
 import com.example.frontend.models.MyBudgetsAdapter;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -97,6 +99,7 @@ public class MyBudgetsActivity extends BaseActivity implements MyBudgetsAdapter.
         stringBuilder.append(getString(R.string.generic_municipality) + budget.getMunicipio() + System.lineSeparator());
         stringBuilder.append(getString(R.string.generic_province) + budget.getProvincia() + System.lineSeparator());
         stringBuilder.append(getString(R.string.generic_reference) + budget.getReferencia() + System.lineSeparator());
+        stringBuilder.append(getString(R.string.generic_total) + NumberFormat.getCurrencyInstance(Locale.GERMANY).format(budget.getTotal()) + System.lineSeparator());
         if (budget instanceof BudgetNewBuild) {
             stringBuilder.append(getString(R.string.build_total_m2) + ((BudgetNewBuild) budget).getSuperficie() + System.lineSeparator());
             stringBuilder.append(getString(R.string.build_material_quality) + ((BudgetNewBuild) budget).getCalidad());

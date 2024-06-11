@@ -74,4 +74,5 @@
     <string name="my_budgets_fail">No s\'han recuperat els pressupostos</string>
     <string name="generic_data_title">Dades:</string>
     <string name="generic_reference">"Referència: "</string>
+    <string name="generic_total">"Total: "</string>
 </resources>
