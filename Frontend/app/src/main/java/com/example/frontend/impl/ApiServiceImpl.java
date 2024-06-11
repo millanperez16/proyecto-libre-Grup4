@@ -45,6 +45,7 @@ public class ApiServiceImpl {
     private static final String URL_KITCHEN = "https://10.0.2.2:8442/presupuestos/cocina/";
     private static final String URL_NEW_BUILD = "https://10.0.2.2:8442/presupuestos/obranueva/";
     private static final String URL_CLIENT_BUDGETS = "https://10.0.2.2:8442/presupuestos/";
+    private static final String URL_IMAGES = "https://10.0.2.2:8442/";
     private static Retrofit retrofit;
     private static Context contextApp;
     public static OkHttpClient cli;
@@ -59,14 +60,12 @@ public class ApiServiceImpl {
         final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        //if (apiService == null) {
         Retrofit retrofitMunicipis = new retrofit2.Retrofit.Builder()
                 .baseUrl(URL_MUNICIPIS + "camp-municipi_transliterat-like/" + like + "/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
         apiService = retrofitMunicipis.create(ApiService.class);
-        //}
         return apiService;
     }
 
@@ -139,7 +138,6 @@ public class ApiServiceImpl {
 
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = getClientWithToken();
-        //if (apiService == null) {
         retrofit = new retrofit2.Retrofit.Builder()
                 .baseUrl(URL_BATHROOM)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -158,10 +156,35 @@ public class ApiServiceImpl {
 
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = getClientWithToken();
-        //if (apiService == null) {
         retrofit = new retrofit2.Retrofit.Builder()
                 .baseUrl(URL_KITCHEN)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+        apiService = retrofit.create(ApiService.class);
+        return apiService;
+    }
+
+    public static ApiService getApiServiceGalleryImages(Context context) {
+        // Creamos un interceptor y le indicamos el log level a usar
+        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        contextApp = context;
+
+        // Asociamos el interceptor a las peticiones
+        final OkHttpClient cli = getClient();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if (cli != null) {
+            httpClient = cli.newBuilder();
+            httpClient.addInterceptor(logging);
+        }
+        Gson gson=new GsonBuilder()
+                .setLenient()
+                .create();
+        retrofit = new retrofit2.Retrofit.Builder()
+                .baseUrl(URL_IMAGES)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(httpClient.build())
                 .build();
         apiService = retrofit.create(ApiService.class);
@@ -210,13 +233,13 @@ public class ApiServiceImpl {
             if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
                 Security.addProvider(new BouncyCastleProvider());
             }
-            for (Provider p : Security.getProviders()) {
+            /*for (Provider p : Security.getProviders()) {
                 Log.d("Provider", p.toString());
-                /*for(Provider.Service service:p.getServices()){
+                for(Provider.Service service:p.getServices()){
                     Log.d("Service type",service.getType());
                     Log.d("Service algorithm",service.getAlgorithm());
-                }*/
-            }
+                }
+            }*/
             KeyStore keyStore = KeyStore.getInstance("PKCS12", "BC");
             keyStore.load(inputStream, "euroconstrucciones".toCharArray());
 

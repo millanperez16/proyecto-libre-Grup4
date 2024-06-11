@@ -104,6 +104,6 @@ public class BudgetReformKitchenActivity extends BaseActivity {
         selectedFactor = (selectedReno.equals("Yes") || selectedReno.equals("Sí")) || selectedReno.equals("Si")? kitchenRenoFactor : 0;
         surfaceFurniture = Integer.parseInt(etKitchenSurfaceFurniture.getText().toString());
         surfaceWorktop = Integer.parseInt(etKitchenSurfaceWorktop.getText().toString());
-        return !height.isNaN() && !width.isNaN() && !length.isNaN() && !tiles.isNaN() && selectedFactor != null && surfaceFurniture != null && surfaceWorktop != null;
+        return height != null && width != null && length != null && tiles != null && selectedFactor != null && surfaceFurniture != null && surfaceWorktop != null;
     }
 }

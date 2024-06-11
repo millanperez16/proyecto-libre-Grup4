@@ -13,7 +13,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiService {
 
@@ -37,4 +39,11 @@ public interface ApiService {
 
     @GET("findAll?pagina=1")
     Call<List<Budget>> getBudgetsByEmail();
+
+    @GET("images")
+    Call<List<String>> getImageNames();
+
+    @Headers("Content-Type: image/jpeg")
+    @GET("images/{name}")
+    Call<String> getImageFile(@Path("name") String imgName);
 }
