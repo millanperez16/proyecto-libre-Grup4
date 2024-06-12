@@ -66,8 +66,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.action_my_budgets) {
             startActivity(new Intent(this, MyBudgetsActivity.class));
             return true;
-        }else if(item.getItemId() == R.id.action_gallery){
+        } else if (item.getItemId() == R.id.action_gallery) {
             startActivity(new Intent(this, ImageGalleryActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.action_about_us) {
+            startActivity(new Intent(this, AboutUsActivity.class));
             return true;
         } else {
             return super.onOptionsItemSelected(item);

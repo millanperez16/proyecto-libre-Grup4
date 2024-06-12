@@ -2,11 +2,9 @@ package com.example.frontend.impl;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.example.frontend.AuthInterceptor;
 import com.example.frontend.R;
 import com.example.frontend.interfaces.ApiService;
 import com.example.frontend.models.Budget;
@@ -16,12 +14,9 @@ import com.google.gson.GsonBuilder;
 
 import java.io.InputStream;
 import java.security.KeyStore;
-import java.security.MessageDigest;
-import java.security.Provider;
 import java.security.SecureRandom;
 import java.security.Security;
 
-import javax.crypto.SecretKeyFactory;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -34,18 +29,14 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class ApiServiceImpl {
     private static ApiService apiService;
     private static final String URL_MUNICIPIS = "https://do.diba.cat/api/dataset/municipis/";
-    private static final String URL_USERS = "https://10.0.2.2:8442/clientes/";
-    private static final String URL_BATHROOM = "https://10.0.2.2:8442/presupuestos/aseos/";
-    private static final String URL_KITCHEN = "https://10.0.2.2:8442/presupuestos/cocina/";
-    private static final String URL_NEW_BUILD = "https://10.0.2.2:8442/presupuestos/obranueva/";
-    private static final String URL_CLIENT_BUDGETS = "https://10.0.2.2:8442/presupuestos/";
-    private static final String URL_IMAGES = "https://10.0.2.2:8442/";
+    private static final String URL_WEBSERVICE = "https://10.0.2.2:8442/";
     private static Retrofit retrofit;
     private static Context contextApp;
     public static OkHttpClient cli;
@@ -84,7 +75,7 @@ public class ApiServiceImpl {
             httpClient.addInterceptor(logging);
         }
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_USERS)
+                .baseUrl(URL_WEBSERVICE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
@@ -105,7 +96,7 @@ public class ApiServiceImpl {
             httpClient.addInterceptor(logging);
         }
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_USERS)
+                .baseUrl(URL_WEBSERVICE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
@@ -121,7 +112,7 @@ public class ApiServiceImpl {
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = getClientWithToken();
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_NEW_BUILD)
+                .baseUrl(URL_WEBSERVICE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
@@ -139,7 +130,7 @@ public class ApiServiceImpl {
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = getClientWithToken();
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_BATHROOM)
+                .baseUrl(URL_WEBSERVICE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
@@ -157,7 +148,7 @@ public class ApiServiceImpl {
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = getClientWithToken();
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_KITCHEN)
+                .baseUrl(URL_WEBSERVICE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
@@ -183,8 +174,32 @@ public class ApiServiceImpl {
                 .setLenient()
                 .create();
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_IMAGES)
+                .baseUrl(URL_WEBSERVICE)
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(httpClient.build())
+                .build();
+        apiService = retrofit.create(ApiService.class);
+        return apiService;
+    }
+
+    public static ApiService getApiServiceAboutUs(Context context) {
+        // Creamos un interceptor y le indicamos el log level a usar
+        final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        contextApp = context;
+
+        // Asociamos el interceptor a las peticiones
+        final OkHttpClient cli = getClient();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if (cli != null) {
+            httpClient = cli.newBuilder();
+            httpClient.addInterceptor(logging);
+        }
+        retrofit = new retrofit2.Retrofit.Builder()
+                .baseUrl(URL_WEBSERVICE)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
         apiService = retrofit.create(ApiService.class);
@@ -207,7 +222,7 @@ public class ApiServiceImpl {
         // Asociamos el interceptor a las peticiones y añadimos el deserializador al ConverterFactory
         OkHttpClient.Builder httpClient = getClientWithToken();
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl(URL_CLIENT_BUDGETS)
+                .baseUrl(URL_WEBSERVICE)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(httpClient.build())
                 .build();

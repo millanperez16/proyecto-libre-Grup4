@@ -23,22 +23,22 @@ public interface ApiService {
     @GET("municipis")
     Call<Municipi> getMunicipi();
 
-    @POST("save")
+    @POST("clientes/save")
     Call<User> registerNewUser(@Body User user);
 
-    @POST("authenticate")
+    @POST("clientes/authenticate")
     Call<Token> loginUser(@Body User user);
 
-    @POST("saveRefAseo")
+    @POST("presupuestos/aseos/saveRefAseo")
     Call<BudgetReformBathroom> createBathroomBudget(@Body BudgetReformBathroom budgetReformBathroom);
 
-    @POST("saveObra")
+    @POST("presupuestos/obranueva/saveObra")
     Call<BudgetNewBuild> createNewBuildBudget(@Body BudgetNewBuild budgetNewBuild);
 
-    @POST("saveRefCocina")
+    @POST("presupuestos/cocina/saveRefCocina")
     Call<BudgetReformKitchen> createKitchenBudget(@Body BudgetReformKitchen budgetReformKitchen);
 
-    @GET("findAll?pagina=1")
+    @GET("presupuestos/findAll?pagina=1")
     Call<List<Budget>> getBudgetsByEmail();
 
     @GET("images")
@@ -46,4 +46,7 @@ public interface ApiService {
 
     @GET("images/{name}")
     Call<ResponseBody> getImageFile(@Path("name") String imgName);
+
+    @GET("aboutUs")
+    Call<String> getAboutUsText();
 }

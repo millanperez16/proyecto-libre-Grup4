@@ -75,4 +75,5 @@
     <string name="generic_data_title">Datos:</string>
     <string name="generic_reference">"Referencia: "</string>
     <string name="generic_total">"Total: "</string>
+    <string name="about_us_title"><u>Sobre nosotros</u></string>
 </resources>
